@@ -1,0 +1,117 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
+/// <summary>
+/// 管理装备和血条的UI脚本
+/// 提供静态instance
+/// </summary>
+public class BloodUIManager : MonoBehaviour
+{
+    public static BloodUIManager instanse;
+    public TextMeshProUGUI bloodText;
+    public TextMeshProUGUI equipmentText;
+    public Transform equipmentBag;
+
+    private GameObject[] equipmentTabs;
+    private GameObject[] equipmentTextures;
+
+    private int currentHiglight;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        instanse = this;
+        equipmentTextures = new GameObject[Constants.MAX_EQUIPMENT_CAP];
+        Init();
+        currentHiglight = 0;
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    /// <summary>
+    /// 初始化装备UI界面
+    /// </summary>
+    public void Init()
+    {
+        equipmentTabs = new GameObject[Constants.MAX_EQUIPMENT_CAP];
+        for (int i = 0; i < Constants.MAX_EQUIPMENT_CAP; i++)
+        {
+            GameObject equipTab = Instantiate(Resources.Load<GameObject>(Constants.EQUIPMENT_TAB_PATH));
+            if (equipTab.CompareTag("EquipmentUI"))
+            {
+                equipmentTabs[i] = equipTab;
+                equipTab.transform.SetParent(equipmentBag);
+                equipTab.transform.localPosition = new Vector2((equipTab.transform.GetComponent<Image>().rectTransform.rect.width) * i *20,0);
+            }
+            else
+            {
+                Debug.LogError("find object no UI tag");
+            }
+        }
+    }
+
+    /// <summary>
+    /// 设置装备的图片，显示在装备栏
+    /// </summary>
+    /// <param name="equipmentIndex">装备下标</param>
+    /// <param name="equipemtTex">装备图</param>
+    public void SetEquipmentTex(int equipmentIndex, Sprite equipemtTex)
+    {
+        GameObject equipment = new GameObject(equipmentIndex.ToString());
+        Image image = equipment.AddComponent<Image>();
+        Transform newEquipemtTransform = equipmentTabs[equipmentIndex].transform;
+        if(image != null)
+        {
+            image.sprite = equipemtTex;
+            equipmentTextures[equipmentIndex] = equipment;
+            image.rectTransform.sizeDelta = new Vector2(newEquipemtTransform.GetComponent<Image>().rectTransform.rect.width/2, newEquipemtTransform.GetComponent<Image>().rectTransform.rect.height/2);
+            image.transform.localPosition = new Vector2( 0, 0);
+            //Debug.Log(image.rectTransform.anchoredPosition);
+            equipment.transform.SetParent(newEquipemtTransform);
+        }
+        else
+        {
+            Debug.LogError("instanite equip texure fail");
+        }
+    }
+
+    /// <summary>
+    /// 装备被使用之后销毁装备栏里面的图层
+    /// </summary>
+    /// <param name="equipmentIndex">这个被删除装备的下标</param>
+    public void RemoveEquipment(int equipmentIndex)
+    {
+        GameObject removeObject = equipmentTextures[equipmentIndex];
+        Destroy(removeObject);
+        equipmentTextures[equipmentIndex] = null;
+    }
+
+    /// <summary>
+    /// 高亮装备
+    /// </summary>
+    /// <param name="highlightIndex">高亮装备栏下标</param>
+    public void Highlight(int highlightIndex)
+    {
+        equipmentTabs[currentHiglight].GetComponent<Image>().color = Color.white;
+        equipmentTabs[highlightIndex].GetComponent<Image>().color = Color.red;
+        currentHiglight = highlightIndex;
+    }
+
+    public void SetBlood(string s)
+    {
+        bloodText.text = s;
+    }
+
+    public void SetEquipments(EquipmentInfoStruct[] list)
+    {
+        equipmentText.text = list.ToString();
+    }
+}
