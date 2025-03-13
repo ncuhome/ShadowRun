@@ -15,8 +15,8 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "New action1",
-                    "type": "Value",
+                    "name": "Jump",
+                    "type": "Button",
                     "id": "835984b7-89e3-472e-b79c-f92ddf7816dd",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -24,13 +24,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "New action2",
+                    "name": "Fire",
                     "type": "Button",
                     "id": "21989438-281a-4b3b-a302-1f29d36cc7c4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -68,7 +68,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "right",
                     "id": "b412afe0-3594-4db1-8b4a-75ffc4edb45d",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -79,7 +79,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "left",
                     "id": "84333ef6-a1e8-47d2-9486-24b66a5dac99",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -96,18 +96,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "New action1",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "55d451d2-b37f-4d1d-8c0e-8d571f7a562e",
-                    "path": "",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action2",
+                    "groups": "PC",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
