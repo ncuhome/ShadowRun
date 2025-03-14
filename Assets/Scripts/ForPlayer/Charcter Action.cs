@@ -11,7 +11,6 @@ using System.Linq;
 /// </summary>
 public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayActions
 {
-    public Camera mainCamera;
     [Header("角色向前移动速度")]
     public float moveForwardSpeed;
     [Header("角色向后移动速度")]
@@ -22,21 +21,25 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
     public float jumpMaxTime;
     [Header("角色跳跃力度")]
     public float jumpHeight;
-
-
+    [Header("判断是否接触地面Collider")]
+    public Collider2D footCollider;
+    [HideInInspector]
+    public JumpState jumpState;
     private Rigidbody2D rb;
-    private Collider2D cd;
     Animator ani;
     SpriteRenderer sprite;
-    CharacterInputSystem inputActions;
-    private float jumpingTime;
-    private bool falling;
+    private float jumpingTimer;
     private CharacterInputSystem _inputActions;
-
+    private bool isGround;
+    private bool isMove;
     private void Awake()
     {
         _inputActions = new CharacterInputSystem();
         _inputActions.GamePlay.SetCallbacks(this); // 将当前对象绑定为回调接收者
+        rb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+        jumpingTimer = 0.0f;
     }
 
     private void OnEnable()
@@ -51,69 +54,42 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        ani = GetComponent<Animator>();
-        cd = GetComponent<Collider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        inputActions = new CharacterInputSystem();
-        jumpingTime = 0.0f;
-        falling = false;
+        isGround = false;
         rb.velocity = new Vector2(1, 0) * fixSpeed;
+        jumpState = JumpState.NonJump;
+        isMove = false;
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        //GetJumpState();
-
+        UpdateVelocity();
     }
 
-
-    private void GetJumpState()
+    private void UpdateVelocity()
     {
-        if (OnGround())
-        {
-            //Debug.Log("on");
-            ani.SetTrigger("StopFalling");
+        if (!isMove) rb.velocity = new Vector2(fixSpeed, rb.velocity.y);
+    }
 
-            falling = false;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground") && collision.IsTouching(footCollider))
+        {
+            isGround = true;
+            jumpState = JumpState.NonJump;
         }
-        float jump = Input.GetAxis("Jump");
-        if (jump >= 0.1 && !falling)
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground") && collision.IsTouching(footCollider))
         {
-
-         
-            if(!OnGround())
-            {
-                jumpingTime += Time.deltaTime;//若在向上跳跃中，增加跳跃计时，不影响坠落
-               
-                if (jumpingTime >= jumpMaxTime)
-                {
-                    jumpingTime = 0;
-                    falling = true;
-                    ani.SetTrigger("Fall");
-                    return;
-                }
-            }
-
-            ani.SetTrigger("Jump");
-            rb.AddForce(new Vector2(0.0f, 1) * jumpHeight, ForceMode2D.Impulse);
-            
-            //Debug.Log(jumpingTime);
-        }
-        else if (jump <= 0 && (!OnGround()))
-        {
-            falling = true;
-            ani.SetTrigger("Fall");
+            isGround = true;
+            jumpState = JumpState.NonJump;
         }
     }
 
-   
-
-    private bool OnGround()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        return cd.IsTouchingLayers(LayerMask.GetMask("Collider"));
+        if (collision.CompareTag("Ground") && collision.IsTouching(footCollider)) isGround = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -122,24 +98,74 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
         {
             Vector2 moveDir = context.ReadValue<Vector2>();
             sprite.flipX = moveDir.normalized.x < 0 ? true : false;
-            rb.velocity = new Vector2(moveDir.normalized.x, 0) * moveForwardSpeed;
+            rb.velocity = new Vector2(moveDir.normalized.x * moveForwardSpeed, rb.velocity.y);
+            isMove = true;
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            rb.velocity = new Vector2(1, 0) * fixSpeed;
+            sprite.flipX = false;
+            isMove = false;
         }
     }
           
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        rb.AddForce(new Vector2(0, 1) * jumpHeight,ForceMode2D.Impulse);
+        if (jumpState == JumpState.Falling) return;
+        if (context.phase == InputActionPhase.Started )
+        {
+            if (!isGround) return;
+            jumpState = JumpState.Jumping;
+            Debug.Log("Start Jump2:"+jumpState);
+        }
+        if (context.phase == InputActionPhase.Performed)
+        {
+            StartCoroutine(OnJumpingState());
+            Debug.Log("On Jump:" + jumpState);
+        }
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            OnFalling();
+            Debug.Log("Cancel Jump:" + jumpState);
+        }
+
+
     }
 
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
+        {
+            ani.SetTrigger("Fire");
+        }
             Debug.Log("fire");
+    }
+
+    IEnumerator OnJumpingState()
+    {
+        while (jumpState == JumpState.Jumping)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            jumpingTimer += Time.deltaTime;
+            if (jumpingTimer >= jumpMaxTime)
+            {
+                OnFalling();
+                Debug.Log("Finish Jump:" + jumpState);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+    void OnFalling()
+    {
+        jumpState = JumpState.Falling;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        jumpingTimer = 0f;
+    }
+    public enum JumpState
+    {
+        NonJump,
+        Jumping,
+        Falling
     }
 }
 
