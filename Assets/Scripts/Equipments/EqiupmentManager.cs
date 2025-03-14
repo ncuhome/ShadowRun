@@ -68,13 +68,13 @@ public class EqiupmentManager : MonoBehaviour
                     equipmentArr[i] = equipment.GetStruct();
                     currentEquipCapcity++;
                     //更新装备栏
-                    BloodUIManager.instanse.SetEquipmentTex(i, collidedObject.GetComponent<SpriteRenderer>().sprite);
+                    EquipmentUIController.instance.SetEquipmentTex(i, collidedObject.GetComponent<SpriteRenderer>().sprite);
                     break;
                 }
                 //Debug.Log(equipmentArr[i].prebPath);
             }
           //更新UI
-            BloodUIManager.instanse.SetEquipments(equipmentArr);
+            EquipmentUIController.instance.SetEquipments(equipmentArr);
             Destroy(collidedObject);
         }
         else
@@ -112,8 +112,8 @@ public class EqiupmentManager : MonoBehaviour
                 currentEquipCapcity--;
 
                 //更新UI
-                BloodUIManager.instanse.SetEquipments(equipmentArr);
-                BloodUIManager.instanse.RemoveEquipment(currentEquipNum);
+                EquipmentUIController.instance.SetEquipments(equipmentArr);
+                EquipmentUIController.instance.RemoveEquipment(currentEquipNum);
             }
                   
            
@@ -149,6 +149,6 @@ public class EqiupmentManager : MonoBehaviour
             currentEquipNum = num;
         }
 
-        BloodUIManager.instanse.Highlight(currentEquipNum);
+        EquipmentUIController.instance.Highlight(currentEquipNum);
     }
 }

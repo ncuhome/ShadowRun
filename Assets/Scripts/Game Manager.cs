@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        //BloodUIManager.instanse.Init();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //UpdateLightState(LightDetect.instance.totalIntensity);
+        UpdateLightState(LightDetect.totalIntensity);
     }
 
     private void UpdateLightState(float lightIntense)
     {
         if (lightIntense >= Constants.MIN_LIGHT)
         {
-            BloodUIManager.instanse.SetBlood("State:lighting");
+            StateUIContorller.instance.SetState("State:lighting");
             FullScreenDark.instanse.Lighting();
         }
 
         else 
         {
             //Debug.Log(lightIntense.ToString());
-            BloodUIManager.instanse.SetBlood("State:Nonlight");
+            StateUIContorller.instance.SetState("State:Nonlight");
             FullScreenDark.instanse.NonLighting();
         }
 

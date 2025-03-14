@@ -116,17 +116,14 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
         {
             if (!isGround) return;
             jumpState = JumpState.Jumping;
-            Debug.Log("Start Jump2:"+jumpState);
         }
         if (context.phase == InputActionPhase.Performed)
         {
             StartCoroutine(OnJumpingState());
-            Debug.Log("On Jump:" + jumpState);
         }
         if (context.phase == InputActionPhase.Canceled)
         {
             OnFalling();
-            Debug.Log("Cancel Jump:" + jumpState);
         }
 
 

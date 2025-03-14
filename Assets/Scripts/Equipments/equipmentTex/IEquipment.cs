@@ -6,11 +6,8 @@ using UnityEngine;
 /// </summary>
 public interface IEquipment 
 {
-
     EquipmentInfoStruct GetStruct();
     void SetStruct();
-
-
 }
 
 /// <summary>

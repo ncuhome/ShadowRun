@@ -16,28 +16,23 @@ public class LightDetect : MonoBehaviour
 
     [Header("静态光照检查范围")]
     public float maxDistance = 10.0f;
-
-    [Header("相机")]
-    public Camera mainCamera;
-
-    public static LightDetect instance;
-
+    private Camera mainCamera;
+    //public static LightDetect instance;
     private SpriteRenderer targetRenderer;
     private List<Light2D> moveLights;
-    [HideInInspector] public float totalIntensity;
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector] public static float totalIntensity;
+
+    void Awake()
     {
         targetRenderer = GetComponent<SpriteRenderer>();
         totalIntensity = 0.0f;
         moveLights = new List<Light2D>();
-        instance = this;
+        mainCamera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //GetLightingIntense();
+        GetLightingIntense();
     }
 
     private bool IsWithinViewport(Light2D light, Rect viewportBounds)

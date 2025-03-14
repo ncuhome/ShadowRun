@@ -8,32 +8,37 @@ using UnityEngine.UI;
 /// 管理装备和血条的UI脚本
 /// 提供静态instance
 /// </summary>
-public class BloodUIManager : MonoBehaviour
+public class EquipmentUIController : MonoBehaviour
 {
-    public static BloodUIManager instanse;
-    public TextMeshProUGUI bloodText;
-    public TextMeshProUGUI equipmentText;
+    public static EquipmentUIController _instance;
+    public static EquipmentUIController instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                if (!(_instance = FindAnyObjectByType<EquipmentUIController>()))
+                {
+                    Debug.LogError("no EquipmentUIController in the scene");
+                }
+            }
+            return _instance;
+        }
+    }
+    
     public Transform equipmentBag;
-
     private GameObject[] equipmentTabs;
     private GameObject[] equipmentTextures;
-
+    public TextMeshProUGUI equipmentText;
     private int currentHiglight;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        instanse = this;
         equipmentTextures = new GameObject[Constants.MAX_EQUIPMENT_CAP];
         Init();
         currentHiglight = 0;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /// <summary>
@@ -104,12 +109,6 @@ public class BloodUIManager : MonoBehaviour
         equipmentTabs[highlightIndex].GetComponent<Image>().color = Color.red;
         currentHiglight = highlightIndex;
     }
-
-    public void SetBlood(string s)
-    {
-        bloodText.text = s;
-    }
-
     public void SetEquipments(EquipmentInfoStruct[] list)
     {
         equipmentText.text = list.ToString();
