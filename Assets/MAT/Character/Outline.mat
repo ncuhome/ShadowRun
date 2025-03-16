@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BH3
-  m_Shader: {fileID: -6465566751694194690, guid: 4e55e457ce44c6d4b9bc11031ba45bcf, type: 3}
+  m_Name: Outline
+  m_Shader: {fileID: -6465566751694194690, guid: 3c537ccc92fd755459b2f24169504ae0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -41,12 +41,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DarkIntense: 4.8655334
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    m_Colors: []
+    - _Alpha: 1
+    - _Width: 0.92
+    m_Colors:
+    - _Color: {r: 10.753007, g: 9.907775, b: 3.4997995, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &6781326774626849167
+--- !u!114 &2301731698766937303
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
