@@ -4,10 +4,10 @@ using UnityEngine;
 /// <summary>
 /// 所有装备贴图的接口，要求每个装备被拾起之前都必须带有预制体信息
 /// </summary>
-public interface IEquipment 
+public interface IEquipmentTex 
 {
-    EquipmentInfoStruct GetStruct();
-    void SetStruct();
+    public EquipmentInfoStruct infoStruct { get;}
+
 }
 
 /// <summary>
@@ -15,7 +15,7 @@ public interface IEquipment
 /// </summary>
 public struct EquipmentInfoStruct
 {
-    
+    public GameObject equipmentPreb;
     public string prebPath;
 
   

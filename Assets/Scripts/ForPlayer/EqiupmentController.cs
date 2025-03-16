@@ -8,7 +8,7 @@ using UnityEngine;
 /// 不提供静态，
 /// 有一个静态结构体Arr记录装备信息
 /// </summary>
-public class EqiupmentManager : MonoBehaviour
+public class EqiupmentController : MonoBehaviour
 {
 
     private EquipmentInfoStruct[] equipmentArr;
@@ -56,7 +56,7 @@ public class EqiupmentManager : MonoBehaviour
         GameObject collidedObject = collision.gameObject;
 
         // 检查GameObject是否实现了Equipments接口
-        IEquipment equipment = collidedObject.GetComponent<IEquipment>();
+        IEquipmentTex equipment = collidedObject.GetComponent<IEquipmentTex>();
         if (equipment != null)
         {
       
@@ -65,7 +65,7 @@ public class EqiupmentManager : MonoBehaviour
             {             
                 if (equipmentArr[i].prebPath == null)
                 {
-                    equipmentArr[i] = equipment.GetStruct();
+                    equipmentArr[i] = equipment.infoStruct;
                     currentEquipCapcity++;
                     //更新装备栏
                     EquipmentUIController.instance.SetEquipmentTex(i, collidedObject.GetComponent<SpriteRenderer>().sprite);

@@ -2,27 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lighting : MonoBehaviour,IEquipment
+public class Lighting : MonoBehaviour,IEquipmentTex
 {
     EquipmentInfoStruct equipmentInfoStruct;
-    public EquipmentInfoStruct GetStruct()
+    public GameObject equipPreb;
+    public EquipmentInfoStruct infoStruct
     {
-        SetStruct();
-        return equipmentInfoStruct;
+        get
+        {
+            if (!equipPreb) Debug.LogError("no equipment preb on the " + gameObject.name);
+            SetStruct();
+            return equipmentInfoStruct;
+        }
     }
 
     public void SetStruct()
     {
         equipmentInfoStruct = new EquipmentInfoStruct
         {
-            prebPath = Constants.EQUIPENT_LIGHTING_PREB_PATH
+            prebPath = Constants.EQUIPENT_LIGHTING_PREB_PATH,
+            equipmentPreb = equipPreb
         };
     }
 
-    void Start()
-    {
-        
-    }
 
   
 

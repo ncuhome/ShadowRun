@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blessing : MonoBehaviour,IEquipment
+public class Blessing : MonoBehaviour,IEquipmentTex
 {
     EquipmentInfoStruct equipmentInfoStruct;
-    public EquipmentInfoStruct GetStruct()
-    {
-        SetStruct();
-        return equipmentInfoStruct;
+    public GameObject equipPreb;
+    public EquipmentInfoStruct infoStruct {
+        get
+        {
+            if (!equipPreb) Debug.LogError("no equipment preb on the " + gameObject.name);
+            SetStruct();
+            return equipmentInfoStruct;
+        }
     }
 
     public void SetStruct()
     {
         equipmentInfoStruct = new EquipmentInfoStruct
         {
-            prebPath = Constants.EQUIPMENT_BLESS_PREB_PATH
+            prebPath = Constants.EQUIPMENT_BLESS_PREB_PATH,
+            equipmentPreb = equipPreb
         };
     }
 
