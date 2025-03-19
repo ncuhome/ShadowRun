@@ -134,6 +134,134 @@ public partial class @CharacterInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""EquipmentPlay"",
+            ""id"": ""92dc1145-85f6-4405-a451-3e3f6e5216e9"",
+            ""actions"": [
+                {
+                    ""name"": ""ChoseEquip1"",
+                    ""type"": ""Button"",
+                    ""id"": ""41aaecf3-d84a-453a-a8a2-8f95d0a1fa76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseEquip"",
+                    ""type"": ""Button"",
+                    ""id"": ""a444402e-9aa6-4e10-9af6-52e2aeee987c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChoseEquip2"",
+                    ""type"": ""Button"",
+                    ""id"": ""9cf988e6-0ab2-429b-a6b8-5731800fdd18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChoseEquip3"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e33e932-3f4d-4436-8ad8-d47a338dfd1b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChoseEquip4"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5858475-a0ff-4237-a973-85b4ed6fd57a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChoseEquip5"",
+                    ""type"": ""Button"",
+                    ""id"": ""cdf2371c-6740-4d86-bf4a-66678f9c5dd0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b3ece151-9f6e-4302-8b86-16b1aea20019"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""ChoseEquip1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52c709d4-9f36-49c5-975c-b894f8adadce"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""UseEquip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d504730f-1d0e-4e68-8a0d-efa6268f7bf2"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoseEquip2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""847ff6dd-984a-488d-ad57-22e525381791"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoseEquip3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b47a116-961d-4bcd-9c14-db9cb6438066"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoseEquip4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a64c951d-4ea0-4fdf-868c-505bbfdf4a87"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoseEquip5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -149,6 +277,14 @@ public partial class @CharacterInputSystem: IInputActionCollection2, IDisposable
         m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
         m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
         m_GamePlay_Fire = m_GamePlay.FindAction("Fire", throwIfNotFound: true);
+        // EquipmentPlay
+        m_EquipmentPlay = asset.FindActionMap("EquipmentPlay", throwIfNotFound: true);
+        m_EquipmentPlay_ChoseEquip1 = m_EquipmentPlay.FindAction("ChoseEquip1", throwIfNotFound: true);
+        m_EquipmentPlay_UseEquip = m_EquipmentPlay.FindAction("UseEquip", throwIfNotFound: true);
+        m_EquipmentPlay_ChoseEquip2 = m_EquipmentPlay.FindAction("ChoseEquip2", throwIfNotFound: true);
+        m_EquipmentPlay_ChoseEquip3 = m_EquipmentPlay.FindAction("ChoseEquip3", throwIfNotFound: true);
+        m_EquipmentPlay_ChoseEquip4 = m_EquipmentPlay.FindAction("ChoseEquip4", throwIfNotFound: true);
+        m_EquipmentPlay_ChoseEquip5 = m_EquipmentPlay.FindAction("ChoseEquip5", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -268,6 +404,92 @@ public partial class @CharacterInputSystem: IInputActionCollection2, IDisposable
         }
     }
     public GamePlayActions @GamePlay => new GamePlayActions(this);
+
+    // EquipmentPlay
+    private readonly InputActionMap m_EquipmentPlay;
+    private List<IEquipmentPlayActions> m_EquipmentPlayActionsCallbackInterfaces = new List<IEquipmentPlayActions>();
+    private readonly InputAction m_EquipmentPlay_ChoseEquip1;
+    private readonly InputAction m_EquipmentPlay_UseEquip;
+    private readonly InputAction m_EquipmentPlay_ChoseEquip2;
+    private readonly InputAction m_EquipmentPlay_ChoseEquip3;
+    private readonly InputAction m_EquipmentPlay_ChoseEquip4;
+    private readonly InputAction m_EquipmentPlay_ChoseEquip5;
+    public struct EquipmentPlayActions
+    {
+        private @CharacterInputSystem m_Wrapper;
+        public EquipmentPlayActions(@CharacterInputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ChoseEquip1 => m_Wrapper.m_EquipmentPlay_ChoseEquip1;
+        public InputAction @UseEquip => m_Wrapper.m_EquipmentPlay_UseEquip;
+        public InputAction @ChoseEquip2 => m_Wrapper.m_EquipmentPlay_ChoseEquip2;
+        public InputAction @ChoseEquip3 => m_Wrapper.m_EquipmentPlay_ChoseEquip3;
+        public InputAction @ChoseEquip4 => m_Wrapper.m_EquipmentPlay_ChoseEquip4;
+        public InputAction @ChoseEquip5 => m_Wrapper.m_EquipmentPlay_ChoseEquip5;
+        public InputActionMap Get() { return m_Wrapper.m_EquipmentPlay; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EquipmentPlayActions set) { return set.Get(); }
+        public void AddCallbacks(IEquipmentPlayActions instance)
+        {
+            if (instance == null || m_Wrapper.m_EquipmentPlayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_EquipmentPlayActionsCallbackInterfaces.Add(instance);
+            @ChoseEquip1.started += instance.OnChoseEquip1;
+            @ChoseEquip1.performed += instance.OnChoseEquip1;
+            @ChoseEquip1.canceled += instance.OnChoseEquip1;
+            @UseEquip.started += instance.OnUseEquip;
+            @UseEquip.performed += instance.OnUseEquip;
+            @UseEquip.canceled += instance.OnUseEquip;
+            @ChoseEquip2.started += instance.OnChoseEquip2;
+            @ChoseEquip2.performed += instance.OnChoseEquip2;
+            @ChoseEquip2.canceled += instance.OnChoseEquip2;
+            @ChoseEquip3.started += instance.OnChoseEquip3;
+            @ChoseEquip3.performed += instance.OnChoseEquip3;
+            @ChoseEquip3.canceled += instance.OnChoseEquip3;
+            @ChoseEquip4.started += instance.OnChoseEquip4;
+            @ChoseEquip4.performed += instance.OnChoseEquip4;
+            @ChoseEquip4.canceled += instance.OnChoseEquip4;
+            @ChoseEquip5.started += instance.OnChoseEquip5;
+            @ChoseEquip5.performed += instance.OnChoseEquip5;
+            @ChoseEquip5.canceled += instance.OnChoseEquip5;
+        }
+
+        private void UnregisterCallbacks(IEquipmentPlayActions instance)
+        {
+            @ChoseEquip1.started -= instance.OnChoseEquip1;
+            @ChoseEquip1.performed -= instance.OnChoseEquip1;
+            @ChoseEquip1.canceled -= instance.OnChoseEquip1;
+            @UseEquip.started -= instance.OnUseEquip;
+            @UseEquip.performed -= instance.OnUseEquip;
+            @UseEquip.canceled -= instance.OnUseEquip;
+            @ChoseEquip2.started -= instance.OnChoseEquip2;
+            @ChoseEquip2.performed -= instance.OnChoseEquip2;
+            @ChoseEquip2.canceled -= instance.OnChoseEquip2;
+            @ChoseEquip3.started -= instance.OnChoseEquip3;
+            @ChoseEquip3.performed -= instance.OnChoseEquip3;
+            @ChoseEquip3.canceled -= instance.OnChoseEquip3;
+            @ChoseEquip4.started -= instance.OnChoseEquip4;
+            @ChoseEquip4.performed -= instance.OnChoseEquip4;
+            @ChoseEquip4.canceled -= instance.OnChoseEquip4;
+            @ChoseEquip5.started -= instance.OnChoseEquip5;
+            @ChoseEquip5.performed -= instance.OnChoseEquip5;
+            @ChoseEquip5.canceled -= instance.OnChoseEquip5;
+        }
+
+        public void RemoveCallbacks(IEquipmentPlayActions instance)
+        {
+            if (m_Wrapper.m_EquipmentPlayActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IEquipmentPlayActions instance)
+        {
+            foreach (var item in m_Wrapper.m_EquipmentPlayActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_EquipmentPlayActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public EquipmentPlayActions @EquipmentPlay => new EquipmentPlayActions(this);
     private int m_PCSchemeIndex = -1;
     public InputControlScheme PCScheme
     {
@@ -282,5 +504,14 @@ public partial class @CharacterInputSystem: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+    }
+    public interface IEquipmentPlayActions
+    {
+        void OnChoseEquip1(InputAction.CallbackContext context);
+        void OnUseEquip(InputAction.CallbackContext context);
+        void OnChoseEquip2(InputAction.CallbackContext context);
+        void OnChoseEquip3(InputAction.CallbackContext context);
+        void OnChoseEquip4(InputAction.CallbackContext context);
+        void OnChoseEquip5(InputAction.CallbackContext context);
     }
 }

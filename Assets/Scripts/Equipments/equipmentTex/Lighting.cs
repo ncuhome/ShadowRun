@@ -20,7 +20,6 @@ public class Lighting : MonoBehaviour,IEquipmentTex
     {
         equipmentInfoStruct = new EquipmentInfoStruct
         {
-            prebPath = Constants.EQUIPENT_LIGHTING_PREB_PATH,
             equipmentPreb = equipPreb
         };
     }

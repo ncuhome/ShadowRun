@@ -2,33 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 挂载到可操控角色上，
 /// 不提供静态，
 /// 有一个静态结构体Arr记录装备信息
 /// </summary>
-public class EqiupmentController : MonoBehaviour
+public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipmentPlayActions
 {
 
     private EquipmentInfoStruct[] equipmentArr;
     public int currentEquipNum;
     private int currentEquipCapcity;
+    private CharacterInputSystem _inputActions;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        _inputActions = new CharacterInputSystem();
+        _inputActions.EquipmentPlay.SetCallbacks(this);
         equipmentArr = new EquipmentInfoStruct[Constants.MAX_EQUIPMENT_CAP];
         currentEquipNum = 0;
         currentEquipCapcity = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-     /*   DetectEquipmentUse();
-        DetectEquipmentChoose();*/
+        _inputActions.EquipmentPlay.Enable();
     }
-
+    private void OnDisable()
+    {
+        _inputActions.EquipmentPlay.Disable();
+    }
     /// <summary>
     /// 检测装备碰撞
     /// </summary>
@@ -63,7 +68,7 @@ public class EqiupmentController : MonoBehaviour
            //给第一个非空元素赋值
           for(int i = 0; i < Constants.MAX_EQUIPMENT_CAP; i++)
             {             
-                if (equipmentArr[i].prebPath == null)
+                if (equipmentArr[i].equipmentPreb == null)
                 {
                     equipmentArr[i] = equipment.infoStruct;
                     currentEquipCapcity++;
@@ -87,68 +92,86 @@ public class EqiupmentController : MonoBehaviour
 
 
     /// <summary>
-    /// 检测装备使用
-    /// 若使用，实例化装备对象，使用use（）
+    /// 实例化装备对象，使用use（）
     /// 更新currentEquipmentCap和UIManager
     /// </summary>
-    private void DetectEquipmentUse()
+    private void EquipmentUse()
     {
-        if (Input.GetAxis("Fire1") > 0.3)
+        //Debug.Log("getDown");
+        if (equipmentArr[currentEquipNum].equipmentPreb != null)
         {
-            //Debug.Log("getDown");
-            if(equipmentArr[currentEquipNum].prebPath!=null )
+            //根据结构体加载预制体
+            GameObject equip = Instantiate(equipmentArr[currentEquipNum].equipmentPreb);
+            //得到预制体脚本
+            var equipImpl = equip.GetComponent<IEquipmentPerb>();
+            if (equipImpl == null)
             {
-                //根据结构体加载预制体
-                GameObject equip = Instantiate(Resources.Load<GameObject>(equipmentArr[currentEquipNum].prebPath));
-                //得到预制体脚本
-                var equipImpl = equip.GetComponent<IEquipmentPerb>();
-                if(equipImpl == null)
-                {
-                    Debug.LogError("no script on preb");
-                    return;
-                }
-                StartCoroutine(equipImpl.Use(transform));
-                equipmentArr[currentEquipNum].prebPath = null;
-                currentEquipCapcity--;
-
-                //更新UI
-                EquipmentUIController.instance.SetEquipments(equipmentArr);
-                EquipmentUIController.instance.RemoveEquipment(currentEquipNum);
+                Debug.LogError("no script on preb");
+                return;
             }
-                  
-           
+            StartCoroutine(equipImpl.Use(transform));
+            equipmentArr[currentEquipNum].equipmentPreb = null;
+            currentEquipCapcity--;
+
+            //更新UI
+            EquipmentUIController.instance.SetEquipments(equipmentArr);
+            EquipmentUIController.instance.RemoveEquipment(currentEquipNum);
         }
 
     }
 
-    /// <summary>
-    /// 检测目前选中装备
-    /// </summary>
-    private void DetectEquipmentChoose()
+    public void OnUseEquip(InputAction.CallbackContext context)
     {
-        int num = currentEquipNum;
-        if(Input.GetAxis("Equipment1") > 0.3)
+        if (context.phase == InputActionPhase.Performed) EquipmentUse();
+    }
+
+    public void OnChoseEquip1(InputAction.CallbackContext context)
+    {
+        if (1 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (context.phase==InputActionPhase.Performed)
         {
             currentEquipNum = 0;
+            EquipmentUIController.instance.Highlight(currentEquipNum);
         }
-        else if(Input.GetAxis("Equipment2") > 0.3)
+    }
+
+    public void OnChoseEquip2(InputAction.CallbackContext context)
+    {
+        if (2 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (context.phase == InputActionPhase.Performed)
         {
             currentEquipNum = 1;
+            EquipmentUIController.instance.Highlight(currentEquipNum);
         }
-        else if (Input.GetAxis("Equipment3") > 0.3)
+    }
+
+    public void OnChoseEquip3(InputAction.CallbackContext context)
+    {
+        if (3 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (context.phase == InputActionPhase.Performed)
         {
             currentEquipNum = 2;
+            EquipmentUIController.instance.Highlight(currentEquipNum);
         }
-        else if (Input.GetAxis("Equipment4") > 0.3)
+    }
+
+    public void OnChoseEquip4(InputAction.CallbackContext context)
+    {
+        if (4 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (context.phase == InputActionPhase.Performed)
         {
             currentEquipNum = 3;
+            EquipmentUIController.instance.Highlight(currentEquipNum);
         }
+    }
 
-        if(currentEquipNum >= Constants.MAX_EQUIPMENT_CAP)
+    public void OnChoseEquip5(InputAction.CallbackContext context)
+    {
+        if (5 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (context.phase == InputActionPhase.Performed)
         {
-            currentEquipNum = num;
+            currentEquipNum = 4;
+            EquipmentUIController.instance.Highlight(currentEquipNum);
         }
-
-        EquipmentUIController.instance.Highlight(currentEquipNum);
     }
 }

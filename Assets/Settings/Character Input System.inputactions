@@ -112,6 +112,134 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "EquipmentPlay",
+            "id": "92dc1145-85f6-4405-a451-3e3f6e5216e9",
+            "actions": [
+                {
+                    "name": "ChoseEquip1",
+                    "type": "Button",
+                    "id": "41aaecf3-d84a-453a-a8a2-8f95d0a1fa76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "UseEquip",
+                    "type": "Button",
+                    "id": "a444402e-9aa6-4e10-9af6-52e2aeee987c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ChoseEquip2",
+                    "type": "Button",
+                    "id": "9cf988e6-0ab2-429b-a6b8-5731800fdd18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ChoseEquip3",
+                    "type": "Button",
+                    "id": "9e33e932-3f4d-4436-8ad8-d47a338dfd1b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChoseEquip4",
+                    "type": "Button",
+                    "id": "b5858475-a0ff-4237-a973-85b4ed6fd57a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChoseEquip5",
+                    "type": "Button",
+                    "id": "cdf2371c-6740-4d86-bf4a-66678f9c5dd0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b3ece151-9f6e-4302-8b86-16b1aea20019",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ChoseEquip1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52c709d4-9f36-49c5-975c-b894f8adadce",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "UseEquip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d504730f-1d0e-4e68-8a0d-efa6268f7bf2",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChoseEquip2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "847ff6dd-984a-488d-ad57-22e525381791",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChoseEquip3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b47a116-961d-4bcd-9c14-db9cb6438066",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChoseEquip4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a64c951d-4ea0-4fdf-868c-505bbfdf4a87",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChoseEquip5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -19,7 +19,6 @@ public class Blessing : MonoBehaviour,IEquipmentTex
     {
         equipmentInfoStruct = new EquipmentInfoStruct
         {
-            prebPath = Constants.EQUIPMENT_BLESS_PREB_PATH,
             equipmentPreb = equipPreb
         };
     }

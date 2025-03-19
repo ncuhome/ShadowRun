@@ -16,7 +16,5 @@ public interface IEquipmentTex
 public struct EquipmentInfoStruct
 {
     public GameObject equipmentPreb;
-    public string prebPath;
-
   
 }

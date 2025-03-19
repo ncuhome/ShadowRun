@@ -10173,6 +10173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1223973350572738854, guid: e1decbcb35b1db94db800033cf36dbc0, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.0558055
+      objectReference: {fileID: 0}
     - target: {fileID: 6407802497559153501, guid: e1decbcb35b1db94db800033cf36dbc0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.04
@@ -10274,6 +10278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlessingTex
       objectReference: {fileID: 0}
+    - target: {fileID: 8498738848938689924, guid: 0df272b5afc7ab444a061d437374ed27, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.09978505
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10287,17 +10295,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 42002236189070197, guid: 340c697d99965a347baaa265e49346c6, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.26905963
+      objectReference: {fileID: 0}
     - target: {fileID: 1841894556224905551, guid: 340c697d99965a347baaa265e49346c6, type: 3}
       propertyPath: m_Name
       value: LightingTex
       objectReference: {fileID: 0}
     - target: {fileID: 3613236089098796454, guid: 340c697d99965a347baaa265e49346c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.17
+      value: -4.201
       objectReference: {fileID: 0}
     - target: {fileID: 3613236089098796454, guid: 340c697d99965a347baaa265e49346c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2
+      value: -1.222
       objectReference: {fileID: 0}
     - target: {fileID: 3613236089098796454, guid: 340c697d99965a347baaa265e49346c6, type: 3}
       propertyPath: m_LocalPosition.z

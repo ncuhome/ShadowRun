@@ -20,7 +20,6 @@ public class Jumping : MonoBehaviour,IEquipmentTex
     {
         equipmentInfoStruct = new EquipmentInfoStruct
         {
-            prebPath = Constants.EQUIPMENT_JUMP_PREB_PATH,
             equipmentPreb = equipPreb
         };
     }
