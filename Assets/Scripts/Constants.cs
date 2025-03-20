@@ -6,16 +6,10 @@ public class Constants
 {
     public static float MIN_LIGHT = 0.01f;
     public static int MAX_EQUIPMENT_CAP = 3;
-
-
     
     public static float EQUIP_THROW_FORCE = 10.0f;
-
-
     //装备栏
     public static string EQUIPMENT_TAB_PATH = "EquipmentTab";
-
-
     //装备浆果
     //预制体
     public static string EQUIPENT_LIGHTING_PREB_PATH = "Lighting";

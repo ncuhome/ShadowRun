@@ -11,20 +11,24 @@ using System.Linq;
 /// </summary>
 public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayActions
 {
-    [Header("角色向前移动速度")]
-    public float moveForwardSpeed;
-    [Header("角色向后移动速度")]
-    public float moveBackSpeed;
-    [Header("角色固定移动速度")]
-    public float fixSpeed;
-    [Header("角色跳跃最大时间")]
-    public float jumpMaxTime;
-    [Header("角色跳跃力度")]
-    public float jumpHeight;
     [Header("判断是否接触地面Collider")]
     public Collider2D footCollider;
+    [Header("存储角色数据文件")]
+    public CharacterAction_SO characterAction_SO;
+
+    [HideInInspector]
+    public float moveForwardSpeed;
+    [HideInInspector]
+    public float moveBackSpeed;
+    [HideInInspector]
+    public float fixSpeed;
+    [HideInInspector]
+    public float jumpMaxTime;
+    [HideInInspector]
+    public float jumpHeight;  
     [HideInInspector]
     public JumpState jumpState;
+
     private Rigidbody2D rb;
     Animator ani;
     SpriteRenderer sprite;
@@ -51,13 +55,18 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
     {
         _inputActions.GamePlay.Disable();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         isGround = false;
         rb.velocity = new Vector2(1, 0) * fixSpeed;
         jumpState = JumpState.NonJump;
         isMove = false;
+        moveForwardSpeed = characterAction_SO.moveForwardSpeed;
+        moveBackSpeed = characterAction_SO.moveBackSpeed;
+        fixSpeed = characterAction_SO.fixSpeed;
+        jumpMaxTime = characterAction_SO.jumpMaxTime;
+        jumpHeight = characterAction_SO.jumpHeight;
     }
 
     private void FixedUpdate()
@@ -97,8 +106,16 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
         if (context.phase == InputActionPhase.Performed)
         {
             Vector2 moveDir = context.ReadValue<Vector2>();
-            sprite.flipX = moveDir.normalized.x < 0 ? true : false;
-            rb.velocity = new Vector2(moveDir.normalized.x * moveForwardSpeed, rb.velocity.y);
+            if (moveDir.x < 0)
+            {
+                sprite.flipX = true;
+                rb.velocity = new Vector2(moveDir.normalized.x * moveForwardSpeed, rb.velocity.y);
+            }
+            else
+            {
+                sprite.flipX = false;
+                rb.velocity = new Vector2(moveDir.normalized.x * moveBackSpeed, rb.velocity.y);
+            }
             isMove = true;
         }
         else if (context.phase == InputActionPhase.Canceled)

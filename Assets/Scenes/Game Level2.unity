@@ -10081,12 +10081,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061f11ea40df82449bdb8c0d106f584a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footCollider: {fileID: 2106872170}
+  characterAction_SO: {fileID: 11400000, guid: 60819bc046868c14392f211590a698bc, type: 2}
   moveForwardSpeed: 6.14
   moveBackSpeed: 4.72
   fixSpeed: 3
   jumpMaxTime: 0.6
   jumpHeight: 6
-  footCollider: {fileID: 2106872170}
   jumpState: 0
 --- !u!114 &2106872168
 MonoBehaviour:
