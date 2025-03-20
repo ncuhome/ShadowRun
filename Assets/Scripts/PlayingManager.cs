@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PlayingManager : MonoBehaviour
 {
-    // Update is called once per frame
     void Update()
     {
         UpdateLightState(LightDetect.totalIntensity);
