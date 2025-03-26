@@ -21,7 +21,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
     {
         _inputActions = new CharacterInputSystem();
         _inputActions.EquipmentPlay.SetCallbacks(this);
-        equipmentArr = new EquipmentInfoStruct[Constants.MAX_EQUIPMENT_CAP];
+        equipmentArr = new EquipmentInfoStruct[EquipConstantsManager.MAX_EQUIPMENT_CAP];
         currentEquipNum = 0;
         currentEquipCapcity = 0;
     }
@@ -40,7 +40,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (currentEquipCapcity  < Constants.MAX_EQUIPMENT_CAP)
+        if (currentEquipCapcity  < EquipConstantsManager.MAX_EQUIPMENT_CAP)
         {
             if (collision.CompareTag("equip"))
             {
@@ -66,7 +66,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
         {
       
            //给第一个非空元素赋值
-          for(int i = 0; i < Constants.MAX_EQUIPMENT_CAP; i++)
+          for(int i = 0; i < EquipConstantsManager.MAX_EQUIPMENT_CAP; i++)
             {             
                 if (equipmentArr[i].equipmentPreb == null)
                 {
@@ -127,7 +127,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
 
     public void OnChoseEquip1(InputAction.CallbackContext context)
     {
-        if (1 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (1 > EquipConstantsManager.MAX_EQUIPMENT_CAP) return;
         if (context.phase==InputActionPhase.Performed)
         {
             currentEquipNum = 0;
@@ -137,7 +137,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
 
     public void OnChoseEquip2(InputAction.CallbackContext context)
     {
-        if (2 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (2 > EquipConstantsManager.MAX_EQUIPMENT_CAP) return;
         if (context.phase == InputActionPhase.Performed)
         {
             currentEquipNum = 1;
@@ -147,7 +147,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
 
     public void OnChoseEquip3(InputAction.CallbackContext context)
     {
-        if (3 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (3 > EquipConstantsManager.MAX_EQUIPMENT_CAP) return;
         if (context.phase == InputActionPhase.Performed)
         {
             currentEquipNum = 2;
@@ -157,7 +157,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
 
     public void OnChoseEquip4(InputAction.CallbackContext context)
     {
-        if (4 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (4 > EquipConstantsManager.MAX_EQUIPMENT_CAP) return;
         if (context.phase == InputActionPhase.Performed)
         {
             currentEquipNum = 3;
@@ -167,7 +167,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
 
     public void OnChoseEquip5(InputAction.CallbackContext context)
     {
-        if (5 > Constants.MAX_EQUIPMENT_CAP) return;
+        if (5 > EquipConstantsManager.MAX_EQUIPMENT_CAP) return;
         if (context.phase == InputActionPhase.Performed)
         {
             currentEquipNum = 4;

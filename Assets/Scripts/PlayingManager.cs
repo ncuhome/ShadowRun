@@ -11,7 +11,7 @@ public class PlayingManager : MonoBehaviour
 
     private void UpdateLightState(float lightIntense)
     {
-        if (lightIntense >= Constants.MIN_LIGHT)
+        if (lightIntense >= EquipConstantsManager.MIN_LIGHT)
         {
             StateUIContorller.instance.SetState("State:lighting");
             FullScreenDark.instanse.Lighting();

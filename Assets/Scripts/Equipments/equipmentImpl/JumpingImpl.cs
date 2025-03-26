@@ -21,25 +21,13 @@ public class JumpingImpl : MonoBehaviour,IEquipmentPerb
     public IEnumerator Use(Transform transform)
     {
         Init(transform);
-        playerAct.jumpHeight = Constants.EQUIPMENT_JUMP_HEIGHT;
+        playerAct.jumpHeight = EquipConstantsManager.EQUIPMENT_JUMP_HEIGHT;
 
-        yield return new WaitForSeconds(Constants.EQUIPMENT_JUMP_MAX_TIME);
+        yield return new WaitForSeconds(EquipConstantsManager.EQUIPMENT_JUMP_MAX_TIME);
 
         //»¹Ô­
         playerAct.jumpHeight = jumpHeight;
         Destroy(gameObject);
 
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

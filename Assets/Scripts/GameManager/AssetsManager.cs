@@ -12,7 +12,7 @@ public class AssetsManager : ScriptableObject
         {
             if (!_assetsManager)
             {
-                if (!(_assetsManager = Resources.Load("UI/AssetsManager") as AssetsManager))
+                if (!(_assetsManager = Resources.Load("AssetsManager") as AssetsManager))
                     Debug.LogError("no asset Manager in path");
             }
             return _assetsManager;
@@ -20,5 +20,11 @@ public class AssetsManager : ScriptableObject
     }
     [Header("装备栏预制体")]
     public GameObject equipTab;
+
+    [Space(5)]
+    [Header("装备")]
+    [Space(2)]
+    [Header("浆果预制光")]
+    public GameObject equipmentlightingPreb;
 
 }

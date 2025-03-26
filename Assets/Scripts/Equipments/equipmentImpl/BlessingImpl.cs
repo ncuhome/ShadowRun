@@ -15,7 +15,7 @@ public class BlessingImpl : MonoBehaviour,IEquipmentPerb
     {
         Debug.Log("use");
         Init(transform);
-        yield return new WaitForSeconds(Constants.BLESSING_EXIT_TIME);
+        yield return new WaitForSeconds(EquipConstantsManager.BLESSING_EXIT_TIME);
         Destroy(gameObject);
     }
 

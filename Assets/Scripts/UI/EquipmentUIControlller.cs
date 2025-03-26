@@ -36,7 +36,7 @@ public class EquipmentUIController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        equipmentTextures = new GameObject[Constants.MAX_EQUIPMENT_CAP];
+        equipmentTextures = new GameObject[EquipConstantsManager.MAX_EQUIPMENT_CAP];
         Init();
         currentHiglight = 0;
 
@@ -47,8 +47,8 @@ public class EquipmentUIController : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        equipmentTabs = new GameObject[Constants.MAX_EQUIPMENT_CAP];
-        for (int i = 0; i < Constants.MAX_EQUIPMENT_CAP; i++)
+        equipmentTabs = new GameObject[EquipConstantsManager.MAX_EQUIPMENT_CAP];
+        for (int i = 0; i < EquipConstantsManager.MAX_EQUIPMENT_CAP; i++)
         {
             GameObject equipTab = Instantiate(AssetsManager.instance.equipTab);
             if (equipTab.CompareTag("EquipmentUI"))

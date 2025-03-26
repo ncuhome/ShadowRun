@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
 
 public class LightingImpl : MonoBehaviour,IEquipmentPerb
 {
@@ -14,13 +13,13 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
     public void Init(Transform playerTransform)
     {
         transform.position = playerTransform.position;
-        Vector3 mousePotion = Input.mousePosition;
-        if(mousePotion == null)
+        Vector3 mousePotion = Mouse.current.position.ReadValue();
+        if (mousePotion == null)
         {
-            rb.AddForce(new Vector2(1,0) * Constants.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(1,0) * EquipConstantsManager.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
         }
  
-        rb.AddForce(new Vector2(mousePotion.x, mousePotion.y).normalized * Constants.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(mousePotion.x, mousePotion.y).normalized * EquipConstantsManager.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
 
     }
 
@@ -35,9 +34,9 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
         Debug.Log("use");
         // 添加 Light2D 组件
        
-        yield return new WaitForSeconds(Constants.LIGHTING_EXIT_TIME);
+        yield return new WaitForSeconds(EquipConstantsManager.LIGHTING_EXIT_TIME);
         //实例化预制体2d光照
-        GameObject light = Instantiate(Resources.Load<GameObject>(Constants.LightingEquipName));
+        GameObject light = AssetsManager.instance.equipmentlightingPreb;
         if(light == null)
         {
             Debug.LogError("the equipment light preb not found");
@@ -49,16 +48,8 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
         Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
