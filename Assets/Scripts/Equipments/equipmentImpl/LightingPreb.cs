@@ -13,6 +13,7 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
     public void Init(Transform playerTransform)
     {
         transform.position = playerTransform.position;
+        rb.velocity = playerTransform.GetComponent<Rigidbody2D>().velocity;
         Vector3 mousePotion = Mouse.current.position.ReadValue();
         if (mousePotion == null)
         {
@@ -36,7 +37,7 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
        
         yield return new WaitForSeconds(EquipConstantsManager.LIGHTING_EXIT_TIME);
         //实例化预制体2d光照
-        GameObject light = AssetsManager.instance.equipmentlightingPreb;
+        GameObject light = GameObject.Instantiate(AssetsManager.instance.equipmentlightingPreb);
         if(light == null)
         {
             Debug.LogError("the equipment light preb not found");

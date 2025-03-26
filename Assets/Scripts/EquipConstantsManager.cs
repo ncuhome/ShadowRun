@@ -8,10 +8,10 @@ public class EquipConstantsManager
     public static float MIN_LIGHT = 0.01f;
     public static int MAX_EQUIPMENT_CAP = 3;
     
-    public static float EQUIP_THROW_FORCE = 10.0f;
+    public static float EQUIP_THROW_FORCE = 10;
 
     //装备浆果
-    public static float LIGHTING_EXIT_TIME = 2.0f;
+    public static float LIGHTING_EXIT_TIME = 0.6f;
 
     //装备祝福
     public static float BLESSING_EXIT_TIME = 5.0f;
