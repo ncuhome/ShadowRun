@@ -25,8 +25,9 @@ public class EquipmentUIController : MonoBehaviour
             return _instance;
         }
     }
-    
+    [Header("装备栏")]
     public Transform equipmentBag;
+    [Header("单个装备栏预制体")]
     private GameObject[] equipmentTabs;
     private GameObject[] equipmentTextures;
     public TextMeshProUGUI equipmentText;
@@ -49,12 +50,13 @@ public class EquipmentUIController : MonoBehaviour
         equipmentTabs = new GameObject[Constants.MAX_EQUIPMENT_CAP];
         for (int i = 0; i < Constants.MAX_EQUIPMENT_CAP; i++)
         {
-            GameObject equipTab = Instantiate(Resources.Load<GameObject>(Constants.EQUIPMENT_TAB_PATH));
+            GameObject equipTab = Instantiate(AssetsManager.instance.equipTab);
             if (equipTab.CompareTag("EquipmentUI"))
             {
                 equipmentTabs[i] = equipTab;
                 equipTab.transform.SetParent(equipmentBag);
-                equipTab.transform.localPosition = new Vector2((equipTab.transform.GetComponent<Image>().rectTransform.rect.width) * i *20,0);
+                equipTab.transform.localPosition = new Vector2((equipTab.GetComponent<Image>().rectTransform.rect.width) * i +20,0);
+                equipTab.GetComponent<Image>().rectTransform.localScale = new Vector3(1, 1, 1);
             }
             else
             {
@@ -77,10 +79,11 @@ public class EquipmentUIController : MonoBehaviour
         {
             image.sprite = equipemtTex;
             equipmentTextures[equipmentIndex] = equipment;
-            image.rectTransform.sizeDelta = new Vector2(newEquipemtTransform.GetComponent<Image>().rectTransform.rect.width/2, newEquipemtTransform.GetComponent<Image>().rectTransform.rect.height/2);
-            image.transform.localPosition = new Vector2( 0, 0);
-            //Debug.Log(image.rectTransform.anchoredPosition);
+            image.rectTransform.sizeDelta = new Vector2(newEquipemtTransform.GetComponent<Image>().rectTransform.rect.width / 2,
+                newEquipemtTransform.GetComponent<Image>().rectTransform.rect.height / 2);
             equipment.transform.SetParent(newEquipemtTransform);
+            image.rectTransform.localScale = new Vector3(1, 1, 1);
+            image.rectTransform.localPosition = new Vector2(0, 0);
         }
         else
         {

@@ -40,7 +40,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (currentEquipCapcity + 1 < Constants.MAX_EQUIPMENT_CAP)
+        if (currentEquipCapcity  < Constants.MAX_EQUIPMENT_CAP)
         {
             if (collision.CompareTag("equip"))
             {
