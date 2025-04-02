@@ -1,0 +1,31 @@
+﻿using UnityEditor;
+using UnityEngine;
+using UnityEngine.Events;
+
+[CreateAssetMenu(fileName = "UIEvent_SO", menuName = "Event/UIEvent_SO")]
+public class UIEvent_SO : ScriptableObject
+{
+    public UnityAction _PauseGame;
+    public UnityAction _StopPause;
+    public UnityAction _ShowPauseMenu;
+    public UnityAction _ClosePauseMenu;
+
+    public void PauseGame()
+    {
+        _PauseGame?.Invoke();
+    }
+
+    public void StopPause()
+    {
+        _StopPause?.Invoke();
+    }
+
+    public void ShowPauseMenu()
+    {
+        _ShowPauseMenu?.Invoke();
+    }
+    public void ClosePauseMenu()
+    {
+        _ClosePauseMenu?.Invoke();
+    }
+}
