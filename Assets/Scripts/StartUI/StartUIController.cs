@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class StartUIController : MonoBehaviour
 {
-    public GameObject loadingPanel;
+    private GameObject loadingPanel;
     private VisualElement root;
     private Button startBtn;
     private Button settingBtn;
@@ -19,7 +19,8 @@ public class StartUIController : MonoBehaviour
         startBtn = root.Q<Button>(name: "Start");
         settingBtn = root.Q<Button>(name: "Setting");
         exitBtn = root.Q<Button>(name: "Exit");
-        loading = loadingPanel.GetComponent<LoadingPanelController>();
+        loadingPanel = GameObject.FindGameObjectWithTag("LoadingPanel");
+        loading = loadingPanel.GetComponent<LoadingPanelController>();     
     }
 
     private void OnEnable()
@@ -29,24 +30,6 @@ public class StartUIController : MonoBehaviour
 
     void OnStartBtn()
     {
-        StartCoroutine(StartNewGame());
-    }
-
-    IEnumerator StartNewGame()
-    {
-        loadingPanel.SetActive(true);
-        AsyncOperation operation = SceneManager.LoadSceneAsync("Game Level2");
-        operation.allowSceneActivation=false;
-        while (!operation.isDone)
-        {
-            loading.SetSliderRate(operation.progress);
-            if (operation.progress >= 0.9f)
-            {
-                loading.SetSliderDone();
-                if (Keyboard.current.anyKey.isPressed) operation.allowSceneActivation = true;
-            }
-            yield return null;
-        }
-
+        StartCoroutine(loading.LoadScene("Game Level2"));
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayingManager : MonoBehaviour
 {
+    public GameConfig_SO gameConfig_SO;
+    private void Awake()
+    {
+        gameConfig_SO.hp = gameConfig_SO.maxDark;
+    }
     void Update()
     {
         UpdateLightState(LightDetect.totalIntensity);
@@ -11,17 +16,14 @@ public class PlayingManager : MonoBehaviour
 
     private void UpdateLightState(float lightIntense)
     {
-        if (lightIntense >= EquipConstantsManager.MIN_LIGHT)
+        if (lightIntense >= gameConfig_SO.minLight)
         {
-            StateUIContorller.instance.SetState("State:lighting");
-            FullScreenDark.instanse.Lighting();
+            CharacterEventManager.instance._OnOutDark.Invoke();
         }
 
         else 
         {
-            //Debug.Log(lightIntense.ToString());
-            StateUIContorller.instance.SetState("State:Nonlight");
-            FullScreenDark.instanse.NonLighting();
+            CharacterEventManager.instance._OnInDark.Invoke();
         }
 
         

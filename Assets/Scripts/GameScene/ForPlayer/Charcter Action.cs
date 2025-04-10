@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.InputSystem;
 using System.Linq;
 
+
 /// <summary>
 /// 角色移动逻辑
 /// 不提供静态
@@ -13,9 +14,17 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
 {
     [Header("判断是否接触地面Collider")]
     public Collider2D footCollider;
-    [Header("存储角色数据文件")]
-    public CharacterAction_SO characterAction_SO;
-
+    private CharacterAction_SO _characterAction_SO;
+    public CharacterAction_SO characterAction_SO { 
+        get {
+            if (!_characterAction_SO)
+            {
+                _characterAction_SO = Resources.Load("CharacterAction_SO") as CharacterAction_SO;
+                if (!_characterAction_SO) Debug.LogError("no characterAction_SO");
+            }
+            return _characterAction_SO;
+        } 
+    }
     [HideInInspector]
     public float moveForwardSpeed;
     [HideInInspector]
@@ -106,14 +115,14 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
         if (context.phase == InputActionPhase.Performed)
         {
             Vector2 moveDir = context.ReadValue<Vector2>();
-            if (moveDir.x < 0)
+            if (moveDir.x > 0)
             {
-                sprite.flipX = true;
+                sprite.flipX = false;
                 rb.velocity = new Vector2(moveDir.normalized.x * moveForwardSpeed, rb.velocity.y);
             }
             else
             {
-                sprite.flipX = false;
+                sprite.flipX = true;
                 rb.velocity = new Vector2(moveDir.normalized.x * moveBackSpeed, rb.velocity.y);
             }
             isMove = true;

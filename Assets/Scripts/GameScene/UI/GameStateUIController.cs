@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateUIController : MonoBehaviour
 {
     public UIEvent_SO UIEvent;
     public GameObject pausePanel;
+    public GameObject deathPanel;
 
     private void OnEnable()
     {
@@ -35,5 +37,17 @@ public class GameStateUIController : MonoBehaviour
     void ClosePauseMenu()
     {
         pausePanel.SetActive(false);
+    }
+    void ShowDeathMenu()
+    {
+        deathPanel.SetActive(true);
+    }
+    void CloseDeathPanel()
+    {
+        deathPanel.SetActive(false);
+    }
+    void RestartGame()
+    {       
+        //SceneManager.LoadSceneAsync
     }
 }

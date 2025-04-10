@@ -2,12 +2,22 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterEventController : MonoBehaviour
+public class CharacterEventManager : MonoBehaviour
 {
     public CharacterEvent_SO characterEvent_SO;
     public UnityEvent _OnPickEquip;
     public UnityEvent _OnDeading;
     public UnityEvent _OnUseEquipment;
+    public UnityEvent _OnInDark;
+    public UnityEvent _OnOutDark;
+    private static CharacterEventManager _instance;
+    public static CharacterEventManager instance { get => _instance; }
+   
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     private void OnEnable()
     {
