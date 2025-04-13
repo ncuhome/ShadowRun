@@ -1,0 +1,16 @@
+{
+    "name": "GameMap",
+    "rootNamespace": "",
+    "references": [
+        "GUID:be254c0e70a3858479cc50e056abd673"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
