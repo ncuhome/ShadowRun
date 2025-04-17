@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class CharacterEventManager : MonoBehaviour
 {
     public CharacterEvent_SO characterEvent_SO;
+    public UnityEvent _OnDead;
     public UnityEvent _OnPickEquip;
-    public UnityEvent _OnDeading;
     public UnityEvent _OnUseEquipment;
     public UnityEvent _OnInDark;
     public UnityEvent _OnOutDark;

@@ -12,6 +12,7 @@ public class PlayingManager : MonoBehaviour
     void Update()
     {
         UpdateLightState(LightDetect.totalIntensity);
+
     }
 
     private void UpdateLightState(float lightIntense)
@@ -24,8 +25,8 @@ public class PlayingManager : MonoBehaviour
         else 
         {
             CharacterEventManager.instance._OnInDark.Invoke();
-        }
-
-        
+            if(FullScreenDark.instanse.darkIntense>=gameConfig_SO.maxDark)
+                CharacterEventManager.instance._OnDead.Invoke();
+        }        
     }
 }

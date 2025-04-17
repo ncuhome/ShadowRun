@@ -12,4 +12,6 @@ public class GameConfig_SO : ScriptableObject
     public float minLight;
     [Header("角色hp")]
     public float hp;
+    [Header("判断角色死亡的距离")]
+    public float deadDistance;
 }

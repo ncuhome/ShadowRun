@@ -8,7 +8,7 @@ public class FullScreenDark : MonoBehaviour
     public static FullScreenDark instanse;
     public float darkIntense;
     public GameConfig_SO gameConfig_SO;
-    // Start is called before the first frame update
+
     void Awake()
     {
         //mat = GetComponent<Material>();
@@ -35,7 +35,7 @@ public class FullScreenDark : MonoBehaviour
     {
         if (darkIntense > 0)
         {
-            darkIntense -= gameConfig_SO.darkSpeed * Time.fixedDeltaTime;
+            darkIntense -= gameConfig_SO.darkSpeed * Time.deltaTime;
         }
        
     }
@@ -43,7 +43,7 @@ public class FullScreenDark : MonoBehaviour
     public  void NonLighting()
     {
 
-        darkIntense += gameConfig_SO.darkSpeed * Time.fixedDeltaTime;
+        darkIntense += gameConfig_SO.darkSpeed * Time.deltaTime;
 
     }
 }

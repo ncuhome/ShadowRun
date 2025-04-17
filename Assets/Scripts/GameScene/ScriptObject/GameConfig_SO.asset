@@ -15,3 +15,5 @@ MonoBehaviour:
   darkSpeed: 1
   maxDark: 50
   minLight: 0.01
+  hp: 48.05034
+  deadDistance: 5

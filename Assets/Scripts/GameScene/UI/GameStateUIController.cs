@@ -14,6 +14,7 @@ public class GameStateUIController : MonoBehaviour
         UIEvent._StopPause += StopPause;
         UIEvent._ShowPauseMenu += ShowPauseMenu;
         UIEvent._ClosePauseMenu += ClosePauseMenu;
+        UIEvent._ShowDeathMenu += ShowDeathMenu;
     }
     private void OnDisable()
     {
@@ -21,6 +22,7 @@ public class GameStateUIController : MonoBehaviour
         UIEvent._StopPause -= StopPause;
         UIEvent._ShowPauseMenu -= ShowPauseMenu;
         UIEvent._ClosePauseMenu -= ClosePauseMenu;
+        UIEvent._ShowDeathMenu += ShowDeathMenu;
     }
     void PauseGame()
     {
@@ -45,9 +47,5 @@ public class GameStateUIController : MonoBehaviour
     void CloseDeathPanel()
     {
         deathPanel.SetActive(false);
-    }
-    void RestartGame()
-    {       
-        //SceneManager.LoadSceneAsync
     }
 }

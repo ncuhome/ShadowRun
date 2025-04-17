@@ -11,7 +11,6 @@ public class UIEvent_SO : ScriptableObject
     public UnityAction _ClosePauseMenu;
     public UnityAction _ShowDeathMenu;
     public UnityAction _CloseDeathMenu;
-    public UnityAction _RestartGame;
 
     public void PauseGame()
     {
@@ -36,9 +35,5 @@ public class UIEvent_SO : ScriptableObject
     public void CloseDeathMenu()
     {
         _CloseDeathMenu?.Invoke();
-    }
-    public void RestartGame()
-    {
-        _RestartGame?.Invoke();
     }
 }
