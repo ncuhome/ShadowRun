@@ -28,6 +28,6 @@ public class StartUIController : MonoBehaviour
 
     void OnStartBtn()
     {
-        LoadManager.LoadingScene("Game Level2");
+        LoadManager.LoadingScene("Game");
     }
 }
