@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class StartUIController : MonoBehaviour
@@ -12,24 +8,26 @@ public class StartUIController : MonoBehaviour
     private Button startBtn;
     private Button settingBtn;
     private Button exitBtn;
-    private LoadingPanelController loading;
     private void Awake()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         startBtn = root.Q<Button>(name: "Start");
         settingBtn = root.Q<Button>(name: "Setting");
         exitBtn = root.Q<Button>(name: "Exit");
-        loadingPanel = GameObject.FindGameObjectWithTag("LoadingPanel");
-        loading = loadingPanel.GetComponent<LoadingPanelController>();     
+        loadingPanel = GameObject.FindGameObjectWithTag("LoadingPanel");     
     }
 
     private void OnEnable()
     {
         startBtn.clicked += OnStartBtn;
     }
+    private void OnDisable()
+    {
+        startBtn.clicked -= OnStartBtn;
+    }
 
     void OnStartBtn()
     {
-        StartCoroutine(loading.LoadScene("Game Level2"));
+        LoadManager.LoadingScene("Game Level2");
     }
 }

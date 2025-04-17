@@ -9,13 +9,13 @@ public class LoadingPanelController : MonoBehaviour
 {
     public Slider slider;
     public TextMeshProUGUI text;
-    private void Awake()
+    public void LoadScene(string sceneName)
     {
-        DontDestroyOnLoad(gameObject);
+        StartCoroutine(StartLoadScene(sceneName));
     }
-    public IEnumerator LoadScene(string sceneName)
+    private IEnumerator StartLoadScene(string sceneName)
     {
-        gameObject.SetActive(true);
+        yield return new WaitForEndOfFrame();
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         operation.allowSceneActivation = false;
         while (!operation.isDone)
