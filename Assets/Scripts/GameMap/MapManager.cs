@@ -20,6 +20,10 @@ public class MapManager : MonoBehaviour
         currentMap = firstMap;
         camera = Camera.main;
     }
+    private void Start()
+    {
+        UpdateStaticLights();
+    }
     private void Update()
     {
         UpdateMap();
@@ -34,6 +38,7 @@ public class MapManager : MonoBehaviour
         fomerMap = currentMap;
         currentMap = nextMap;
         hasNext = false;
+        UpdateStaticLights();
     }
     private void GenerateNextMap()
     {
@@ -41,8 +46,7 @@ public class MapManager : MonoBehaviour
         nextMap.transform.position = new Vector3(currentMap.end.position.x + (nextMap.transform.position.x - nextMap.begin.position.x),
             currentMap.transform.position.y, currentMap.transform.position.z);
         if(fomerMap)mapPool.PushObj(fomerMap.gameObject);
-        hasNext = true;
-        
+        hasNext = true;        
     }
     private Map GetRandomMap()
     {
@@ -52,5 +56,9 @@ public class MapManager : MonoBehaviour
     private void OnDestroy()
     {
         mapPool.Clear();
+    }
+    private void UpdateStaticLights()
+    {
+        LightDetect.instance.lightSources = currentMap.lights;
     }
 }

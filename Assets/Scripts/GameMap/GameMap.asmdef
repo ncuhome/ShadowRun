@@ -2,7 +2,9 @@
     "name": "GameMap",
     "rootNamespace": "",
     "references": [
-        "GUID:be254c0e70a3858479cc50e056abd673"
+        "GUID:be254c0e70a3858479cc50e056abd673",
+        "GUID:23f78d3cde3e3a8418789867e9888e82",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -13,11 +13,18 @@ public class LightDetect : MonoBehaviour
 
     [Header("æ≤Ã¨π‚’’ ˝◊È")]
     public Light2D[] lightSources;
-
     [Header("æ≤Ã¨π‚’’ºÏ≤È∑∂Œß")]
     public float maxDistance = 10.0f;
     private Camera mainCamera;
-    //public static LightDetect instance;
+    private static LightDetect _instance;
+    public static LightDetect instance { get { 
+            if(!_instance)
+            {
+                _instance = GameObject.FindAnyObjectByType<LightDetect>();
+                if (!_instance) Debug.LogError("no active LightDetect");
+            }
+            return _instance;
+        } }
     private SpriteRenderer targetRenderer;
     private List<Light2D> moveLights;
     [HideInInspector] public static float totalIntensity;
@@ -52,7 +59,7 @@ public class LightDetect : MonoBehaviour
     private void GetMoveLightIntense()
     {
         GameObject[] allLightObjects = GameObject.FindGameObjectsWithTag("MoveLightSource");
-
+        moveLights.Clear();
         foreach (GameObject lightObj in allLightObjects)
         {
             Light2D light = lightObj.GetComponent<Light2D>();

@@ -137,6 +137,7 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        Debug.Log(jumpState);
         if (jumpState == JumpState.Falling) return;
         if (context.phase == InputActionPhase.Started )
         {
