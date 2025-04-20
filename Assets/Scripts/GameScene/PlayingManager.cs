@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayingManager : MonoBehaviour
 {
     public GameConfig_SO gameConfig_SO;
+    private bool isDead = false;
     private void Awake()
     {
         gameConfig_SO.hp = gameConfig_SO.maxDark;
@@ -25,8 +26,12 @@ public class PlayingManager : MonoBehaviour
         else 
         {
             CharacterEventManager.instance._OnInDark.Invoke();
-            if(FullScreenDark.instanse.darkIntense>=gameConfig_SO.maxDark)
+            if(FullScreenDark.instanse.darkIntense>=gameConfig_SO.maxDark && !isDead)
+            {
+                isDead = true;
                 CharacterEventManager.instance._OnDead.Invoke();
+            }
+                
         }        
     }
 }

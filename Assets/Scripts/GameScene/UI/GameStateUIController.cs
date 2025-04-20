@@ -26,7 +26,7 @@ public class GameStateUIController : MonoBehaviour
     }
     void PauseGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
     }
     void StopPause()
     {
