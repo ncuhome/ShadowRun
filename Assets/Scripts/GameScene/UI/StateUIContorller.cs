@@ -7,8 +7,12 @@ public class StateUIContorller : MonoBehaviour
 {
     public TextMeshProUGUI healthText;
     public Slider hpSlider;
-    public GameConfig_SO gameConfig_SO;
- 
+    private GameConfig_SO gameConfig_SO;
+
+    void Awake()
+    {
+        gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
+    }
     private void OnEnable()
     {
         CharacterEventManager.instance.characterEvent_SO._OnInDarkUI += SetNonLightState;

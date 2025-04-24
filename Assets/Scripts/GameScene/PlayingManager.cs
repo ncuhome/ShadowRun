@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayingManager : MonoBehaviour
 {
-    public GameConfig_SO gameConfig_SO;
+    private GameConfig_SO gameConfig_SO;
     private bool isDead = false;
     private void Awake()
-    {
+    {      
+        gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
         gameConfig_SO.hp = gameConfig_SO.maxDark;
     }
     void Update()

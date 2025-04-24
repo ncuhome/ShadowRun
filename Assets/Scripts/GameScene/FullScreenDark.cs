@@ -7,13 +7,14 @@ public class FullScreenDark : MonoBehaviour
     public Material mat;
     public static FullScreenDark instanse;
     public float darkIntense;
-    public GameConfig_SO gameConfig_SO;
+    private GameConfig_SO gameConfig_SO;
 
     void Awake()
     {
         //mat = GetComponent<Material>();
         darkIntense = 0;
         instanse = this;
+        gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
     }
     private void OnEnable()
     {

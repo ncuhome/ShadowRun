@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class BlackHoleDistance : MonoBehaviour
 {
-    public GameConfig_SO gameConfig_SO;
+    private GameConfig_SO gameConfig_SO;
     private new Collider2D collider;
     private bool isDead = false;
     private void Awake()
     {
         collider = GetComponent<Collider2D>();
+        gameConfig_SO=Resources.Load<GameConfig_SO>("GameConfig_SO");
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
