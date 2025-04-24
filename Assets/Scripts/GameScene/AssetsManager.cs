@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [CreateAssetMenu(fileName = "AssetsManager", menuName = "Asset/AssetsManager")]
 public class AssetsManager : ScriptableObject
@@ -18,13 +19,19 @@ public class AssetsManager : ScriptableObject
             return _assetsManager;
         }
     }
-    [Header("装备栏预制体")]
-    public GameObject equipTab;
+    [Header("UI-equipTab")]
+    public AssetReference equipTab;
 
     [Space(5)]
-    [Header("装备")]
+    [Header("Game-Equipment-Used")]
     [Space(2)]
-    [Header("浆果预制光")]
-    public GameObject equipmentlightingPreb;
+    [Header("equip-lighting0")]
+    public AssetReference equipLightingPreb;
+    [Header("equip-lighting1")]
+    public AssetReference equipLightingPreb1;
+    [Header("equip-blessing")]
+    public AssetReference equipBlessingPreb;
+    [Header("equip-Jumping")]
+    public AssetReference equipJumpingPreb;
 
 }

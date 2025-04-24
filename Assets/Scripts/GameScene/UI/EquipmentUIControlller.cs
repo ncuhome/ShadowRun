@@ -4,9 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
 /// <summary>
-/// ¹ÜÀí×°±¸ºÍÑªÌõµÄUI½Å±¾
-/// Ìá¹©¾²Ì¬instance
+/// ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½UIï¿½Å±ï¿½
+/// ï¿½á¹©ï¿½ï¿½Ì¬instance
 /// </summary>
 public class EquipmentUIController : MonoBehaviour
 {
@@ -25,9 +26,9 @@ public class EquipmentUIController : MonoBehaviour
             return _instance;
         }
     }
-    [Header("×°±¸À¸")]
+    [Header("×°ï¿½ï¿½ï¿½ï¿½")]
     public Transform equipmentBag;
-    [Header("µ¥¸ö×°±¸À¸Ô¤ÖÆÌå")]
+    [Header("ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½")]
     private GameObject[] equipmentTabs;
     private GameObject[] equipmentTextures;
     public TextMeshProUGUI equipmentText;
@@ -43,33 +44,39 @@ public class EquipmentUIController : MonoBehaviour
     }
 
     /// <summary>
-    /// ³õÊ¼»¯×°±¸UI½çÃæ
+    /// ï¿½ï¿½Ê¼ï¿½ï¿½×°ï¿½ï¿½UIï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void Init()
     {
         equipmentTabs = new GameObject[EquipConstantsManager.MAX_EQUIPMENT_CAP];
         for (int i = 0; i < EquipConstantsManager.MAX_EQUIPMENT_CAP; i++)
         {
-            GameObject equipTab = Instantiate(AssetsManager.instance.equipTab);
-            if (equipTab.CompareTag("EquipmentUI"))
-            {
-                equipmentTabs[i] = equipTab;
-                equipTab.transform.SetParent(equipmentBag);
-                equipTab.transform.localPosition = new Vector2((equipTab.GetComponent<Image>().rectTransform.rect.width) * i +20,0);
-                equipTab.GetComponent<Image>().rectTransform.localScale = new Vector3(1, 1, 1);
-            }
-            else
-            {
-                Debug.LogError("find object no UI tag");
-            }
+            int index = i; // é¿å…é—­åŒ…é—®é¢˜
+            GameObject equipTab;
+            AssetsManager.instance.equipTab.InstantiateAsync().Completed+=(obj)=>{
+                equipTab = obj.Result;
+                if (equipTab.CompareTag("EquipmentUI"))
+                {
+                    equipmentTabs[index] = equipTab;
+                    equipTab.transform.SetParent(equipmentBag);
+                    equipTab.transform.localPosition = new Vector2((equipTab.GetComponent<Image>().rectTransform.rect.width) * index +20,0);
+                    equipTab.GetComponent<Image>().rectTransform.localScale = new Vector3(1, 1, 1);
+                }
+                else
+                {
+                    Debug.LogError("find object no UI tag");
+                }
+            };
+            
+            
         }
     }
 
     /// <summary>
-    /// ÉèÖÃ×°±¸µÄÍ¼Æ¬£¬ÏÔÊ¾ÔÚ×°±¸À¸
+    /// ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½
     /// </summary>
-    /// <param name="equipmentIndex">×°±¸ÏÂ±ê</param>
-    /// <param name="equipemtTex">×°±¸Í¼</param>
+    /// <param name="equipmentIndex">×°ï¿½ï¿½ï¿½Â±ï¿½</param>
+    /// <param name="equipemtTex">×°ï¿½ï¿½Í¼</param>
     public void SetEquipmentTex(int equipmentIndex, Sprite equipemtTex)
     {
         GameObject equipment = new GameObject(equipmentIndex.ToString());
@@ -92,9 +99,9 @@ public class EquipmentUIController : MonoBehaviour
     }
 
     /// <summary>
-    /// ×°±¸±»Ê¹ÓÃÖ®ºóÏú»Ù×°±¸À¸ÀïÃæµÄÍ¼²ã
+    /// ×°ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
     /// </summary>
-    /// <param name="equipmentIndex">Õâ¸ö±»É¾³ý×°±¸µÄÏÂ±ê</param>
+    /// <param name="equipmentIndex">ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½</param>
     public void RemoveEquipment(int equipmentIndex)
     {
         GameObject removeObject = equipmentTextures[equipmentIndex];
@@ -103,9 +110,9 @@ public class EquipmentUIController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸ßÁÁ×°±¸
+    /// ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½
     /// </summary>
-    /// <param name="highlightIndex">¸ßÁÁ×°±¸À¸ÏÂ±ê</param>
+    /// <param name="highlightIndex">ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½</param>
     public void Highlight(int highlightIndex)
     {
         equipmentTabs[currentHiglight].GetComponent<Image>().color = Color.white;

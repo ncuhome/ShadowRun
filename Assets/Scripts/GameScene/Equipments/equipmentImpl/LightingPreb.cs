@@ -7,9 +7,9 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
     private Rigidbody2D rb;
    
     /// <summary>
-    /// ³õÊ¼»¯µÀ¾ßÎ»ÖÃºÍÍ¶ÖÀ·½Ïò
+    /// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãºï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
-    /// <param name="playerTransform">½ÇÉ«×ø±ê</param>
+    /// <param name="playerTransform">ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½</param>
     public void Init(Transform playerTransform)
     {
         transform.position = playerTransform.position;
@@ -25,27 +25,30 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
     }
 
     /// <summary>
-    /// µÀ¾ßÊ¹ÓÃ¾ßÌåÊµÏÖ
+    /// ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¾ï¿½ï¿½ï¿½Êµï¿½ï¿½
     /// </summary>
-    /// <param name="playerTransform">½ÇÉ«×ø±ê</param>
-    /// <returns>·µ»ØµÀ¾ßÊ¹ÓÃµÄÐ­³Ì</returns>
+    /// <param name="playerTransform">ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½</param>
+    /// <returns>ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½Ð­ï¿½ï¿½</returns>
     public IEnumerator Use(Transform playerTransform)
     {
         Init(playerTransform);
         Debug.Log("use");
-        // Ìí¼Ó Light2D ×é¼þ
+        // ï¿½ï¿½ï¿½ï¿½ Light2D ï¿½ï¿½ï¿½
        
         yield return new WaitForSeconds(EquipConstantsManager.LIGHTING_EXIT_TIME);
-        //ÊµÀý»¯Ô¤ÖÆÌå2d¹âÕÕ
-        GameObject light = GameObject.Instantiate(AssetsManager.instance.equipmentlightingPreb);
-        if(light == null)
-        {
-            Debug.LogError("the equipment light preb not found");
-        }
-        else
-        {
-            light.transform.position = transform.position;
-        }
+        GameObject light;
+        AssetsManager.instance.equipLightingPreb1.InstantiateAsync().Completed += (obj) =>{
+            light = obj.Result;
+             if(light == null)
+            {
+                Debug.LogError("the equipment light preb not found");
+            }
+            else
+            {
+                light.transform.position = transform.position;
+            }
+            
+        };     
         Destroy(gameObject);
     }
 

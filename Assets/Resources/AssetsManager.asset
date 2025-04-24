@@ -12,5 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14c5b0fc6e235f4ab7e105a2c172330, type: 3}
   m_Name: AssetsManager
   m_EditorClassIdentifier: 
-  equipTab: {fileID: 2589798186139028651, guid: 4c907b3df9a744c42992bcdea826a50f, type: 3}
-  equipmentlightingPreb: {fileID: 7493380357265713022, guid: 0aa460398128d884087e99e6b2888ae1, type: 3}
+  equipTab:
+    m_AssetGUID: 4c907b3df9a744c42992bcdea826a50f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  equipLightingPreb:
+    m_AssetGUID: 4cc47af3f196d634ca6e1ef8d0e2a1f7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  equipLightingPreb1:
+    m_AssetGUID: 0aa460398128d884087e99e6b2888ae1
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  equipBlessingPreb:
+    m_AssetGUID: 9717fe22f27cc9141b7ea966848ad84d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  equipJumpingPreb:
+    m_AssetGUID: f1a1a484be5b15646a8fa8822634f9ac
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
