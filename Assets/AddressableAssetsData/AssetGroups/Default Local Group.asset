@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f9debea80d888f7e8a0cc017724230d8
   m_SerializeEntries:
-  - m_GUID: 0aa460398128d884087e99e6b2888ae1
-    m_Address: Assets/AddressableResource/Equipment/EquipUsed/LightingEquip.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9717fe22f27cc9141b7ea966848ad84d
     m_Address: Assets/AddressableResource/Equipment/EquipUsed/Blessing.prefab
     m_ReadOnly: 0
