@@ -2,6 +2,18 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    private static ScoreManager _instance;
+    public static ScoreManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<ScoreManager>();
+            }
+            return _instance;
+        }
+    }
     [HideInInspector]
     public int score;
     private int lastScore;

@@ -7,12 +7,12 @@ using System.Linq;
 
 
 /// <summary>
-/// ½ÇÉ«ÒÆ¶¯Âß¼­
-/// ²»Ìá¹©¾²Ì¬
+/// ï¿½ï¿½É«ï¿½Æ¶ï¿½ï¿½ß¼ï¿½
+/// ï¿½ï¿½ï¿½á¹©ï¿½ï¿½Ì¬
 /// </summary>
 public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayActions
 {
-    [Header("ÅÐ¶ÏÊÇ·ñ½Ó´¥µØÃæCollider")]
+    [Header("ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½Collider")]
     public Collider2D footCollider;
     private CharacterAction_SO _characterAction_SO;
     public CharacterAction_SO characterAction_SO { 
@@ -48,7 +48,7 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
     private void Awake()
     {
         _inputActions = new CharacterInputSystem();
-        _inputActions.GamePlay.SetCallbacks(this); // ½«µ±Ç°¶ÔÏó°ó¶¨Îª»Øµ÷½ÓÊÕÕß
+        _inputActions.GamePlay.SetCallbacks(this); // ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
@@ -57,7 +57,7 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
 
     private void OnEnable()
     {
-        _inputActions.GamePlay.Enable(); // ÆôÓÃGamePlay Action Map
+        _inputActions.GamePlay.Enable(); // ï¿½ï¿½ï¿½ï¿½GamePlay Action Map
     }
 
     private void OnDisable()
@@ -81,8 +81,15 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
     private void FixedUpdate()
     {
         UpdateVelocity();
+        UpdateCharacterSO();
     }
-
+    private void UpdateCharacterSO(){
+        moveForwardSpeed = characterAction_SO.moveForwardSpeed;
+        moveBackSpeed = characterAction_SO.moveBackSpeed;
+        fixSpeed = characterAction_SO.fixSpeed;
+        jumpMaxTime = characterAction_SO.jumpMaxTime;
+        jumpHeight = characterAction_SO.jumpHeight;
+    }
     private void UpdateVelocity()
     {
         if (!isMove) rb.velocity = new Vector2(fixSpeed, rb.velocity.y);
