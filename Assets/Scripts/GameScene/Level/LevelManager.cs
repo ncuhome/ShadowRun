@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
         gameLevelPreset_SO = Resources.Load<GameLevelPreset_SO>("GameLevelPreset_SO");
         currentLevelData = gameLevelPreset_SO.defualtLevelData;
         nextLevelData = gameLevelPreset_SO.levelDatas[nextLevelDataIndex];
+        UpdateLeveData();
     }
     void FixedUpdate()
     {
@@ -50,6 +51,14 @@ public class LevelManager : MonoBehaviour
         currentLevelData = nextLevelData;  
         nextLevelData = gameLevelPreset_SO.levelDatas[nextLevelDataIndex];
         
+        UpdateLeveData();
+        Debug.Log("LevelManager: " + currentLevelData.levelName);
+    }
+    /// <summary>
+    /// 更新难度数据
+    /// </summary>
+    public void UpdateLeveData()
+    {
         //更新难度
         gameConfig_SO.darkSpeed = currentLevelData.darkSpeed;
         gameConfig_SO.minLight= currentLevelData.minLight;
@@ -59,7 +68,6 @@ public class LevelManager : MonoBehaviour
         characterAction_SO.fixSpeed = currentLevelData.fixSpeed;
         characterAction_SO.jumpMaxTime = currentLevelData.jumpMaxTime;
         characterAction_SO.jumpHeight = currentLevelData.jumpHeight;
-        Debug.Log("LevelManager: " + currentLevelData.levelName);
     }
 
 }
