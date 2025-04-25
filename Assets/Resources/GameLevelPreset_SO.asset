@@ -12,3 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfd54217857add9d9f0bf1f91401173, type: 3}
   m_Name: GameLevelPreset_SO
   m_EditorClassIdentifier: 
+  defualtLevelData:
+    trigglerScore: 0
+    levelName: defualt
+    darkSpeed: 1
+    minLight: 0.01
+    deadDistance: 5
+    moveForwardSpeed: 6
+    moveBackSpeed: 3
+    fixSpeed: 2
+    jumpMaxTime: 0.5
+    jumpHeight: 6
+  levelDatas:
+  - trigglerScore: 10
+    levelName: level1
+    darkSpeed: 20
+    minLight: 10
+    deadDistance: 10
+    moveForwardSpeed: 6
+    moveBackSpeed: 3
+    fixSpeed: 2
+    jumpMaxTime: 2
+    jumpHeight: 5
+  - trigglerScore: 125
+    levelName: 
+    darkSpeed: 0
+    minLight: 0
+    deadDistance: 0
+    moveForwardSpeed: 0
+    moveBackSpeed: 0
+    fixSpeed: 0
+    jumpMaxTime: 0
+    jumpHeight: 0
+  - trigglerScore: 132
+    levelName: 
+    darkSpeed: 0
+    minLight: 0
+    deadDistance: 0
+    moveForwardSpeed: 0
+    moveBackSpeed: 0
+    fixSpeed: 0
+    jumpMaxTime: 0
+    jumpHeight: 0

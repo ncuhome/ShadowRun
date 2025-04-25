@@ -18,11 +18,6 @@ public class StateUIContorller : MonoBehaviour
         CharacterEventManager.instance.characterEvent_SO._OnInDarkUI += SetNonLightState;
         CharacterEventManager.instance.characterEvent_SO._OnOutDarkUI += SetLightingState;
     }
-    private void OnDisable()
-    {
-        CharacterEventManager.instance.characterEvent_SO._OnInDarkUI -= SetNonLightState;
-        CharacterEventManager.instance.characterEvent_SO._OnOutDarkUI -= SetLightingState;
-    }
 
     private void SetHpUI()
     {

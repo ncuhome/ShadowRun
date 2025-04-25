@@ -47,4 +47,18 @@ public class CharacterEvent_SO : ScriptableObject
     {
         _OnPlayDeadingAnim?.Invoke();
     }
+    /// <summary>
+    /// 清理事件
+    /// </summary>
+    public void GC()
+    {
+        _OnPlayPickEquipMusic = null;
+        _OnPlayUseEquipMusic = null;
+        _OnDeadingVFX = null;
+        _OnPlayDeadingAnim = null;
+        _OnInDarkVFX = null;
+        _OnOutDarkVFX = null;
+        _OnInDarkUI = null;
+        _OnOutDarkUI = null;
+    }
 }

@@ -11,14 +11,17 @@ public class CharacterEventManager : MonoBehaviour
     public UnityEvent _OnInDark;
     public UnityEvent _OnOutDark;
     private static CharacterEventManager _instance;
-    public static CharacterEventManager instance { get => _instance; }
-   
-
-    private void Awake()
-    {
-        _instance = this;
+    public static CharacterEventManager instance{
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<CharacterEventManager>();             
+            }
+            return _instance;
+        }
     }
-
+   
     private void OnEnable()
     {
         characterEvent_SO._OnPlayPickEquipMusic += OnPlayPickEquipMusic;
@@ -32,6 +35,7 @@ public class CharacterEventManager : MonoBehaviour
         characterEvent_SO._OnPlayUseEquipMusic -= OnPlayUseEquipMusic;
         characterEvent_SO._OnDeadingVFX -= OnDeadingVFX;
         characterEvent_SO._OnPlayDeadingAnim -= OnPlayDeadingAnim;
+        characterEvent_SO.GC();
     }
 
     public void OnPlayPickEquipMusic()

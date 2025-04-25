@@ -18,11 +18,7 @@ public class GameStateUIController : MonoBehaviour
     }
     private void OnDisable()
     {
-        UIEvent._PauseGame -= PauseGame;
-        UIEvent._StopPause -= StopPause;
-        UIEvent._ShowPauseMenu -= ShowPauseMenu;
-        UIEvent._ClosePauseMenu -= ClosePauseMenu;
-        UIEvent._ShowDeathMenu += ShowDeathMenu;
+        UIEvent.GC();
     }
     void PauseGame()
     {

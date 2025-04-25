@@ -21,11 +21,6 @@ public class FullScreenDark : MonoBehaviour
         CharacterEventManager.instance.characterEvent_SO._OnInDarkVFX += NonLighting;
         CharacterEventManager.instance.characterEvent_SO._OnOutDarkVFX += Lighting;
     }
-    private void OnDisable()
-    {
-        CharacterEventManager.instance.characterEvent_SO._OnInDarkVFX -= NonLighting;
-        CharacterEventManager.instance.characterEvent_SO._OnOutDarkVFX -= Lighting;
-    }
 
     void FixedUpdate()
     {
