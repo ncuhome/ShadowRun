@@ -37,17 +37,13 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
        
         yield return new WaitForSeconds(EquipConstantsManager.LIGHTING_EXIT_TIME);
         GameObject light;
-        AssetsManager.instance.equipLightingPreb1.InstantiateAsync().Completed += (obj) =>{
+        AssetsManager.instance.equipLightingPreb1.InstantiateAsync(transform.position,new Quaternion()).Completed += (obj) =>{
             light = obj.Result;
              if(light == null)
             {
                 Debug.LogError("the equipment light preb not found");
             }
-            else
-            {
-                light.transform.position = transform.position;
-            }
-            
+  
         };     
         Destroy(gameObject);
     }
