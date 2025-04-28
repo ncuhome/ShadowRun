@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour
     {
         sceneEvent_SO._BackToSart -= OnBackToStart;
         sceneEvent_SO._RestartGame -= OnRestartGame;
+        sceneEvent_SO.GC();
     }
     private void OnRestartGame()
     {

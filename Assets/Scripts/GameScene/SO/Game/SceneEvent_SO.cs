@@ -15,4 +15,9 @@ public class SceneEvent_SO : ScriptableObject
     {
         _RestartGame?.Invoke();
     }
+    public void GC()
+    {
+        _RestartGame = null;
+        _BackToSart = null;
+    }
 }
