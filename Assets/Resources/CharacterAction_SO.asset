@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9698c16cbb30ca74ba6b0982d076f383, type: 3}
   m_Name: CharacterAction_SO
   m_EditorClassIdentifier: 
-  hp: 100
   moveForwardSpeed: 6
   moveBackSpeed: 3
   fixSpeed: 2
-  jumpMaxTime: 0.5
+  jumpMaxTime: 0.6
   jumpHeight: 6

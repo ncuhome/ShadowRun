@@ -33,6 +33,10 @@ public class ScoreManager : MonoBehaviour
     }
     void OnDisable()
     {
+        SaveScore();
+    }
+    public void SaveScore()
+    {
         int record = PlayerPrefs.GetInt("Record", 0);
         if (score > record)
         {
