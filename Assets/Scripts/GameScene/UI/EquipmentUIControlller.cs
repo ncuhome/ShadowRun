@@ -31,7 +31,6 @@ public class EquipmentUIController : MonoBehaviour
     [Header("����װ����Ԥ����")]
     private GameObject[] equipmentTabs;
     private GameObject[] equipmentTextures;
-    public TextMeshProUGUI equipmentText;
     private int currentHiglight;
 
     // Start is called before the first frame update
@@ -118,9 +117,5 @@ public class EquipmentUIController : MonoBehaviour
         equipmentTabs[currentHiglight].GetComponent<Image>().color = Color.white;
         equipmentTabs[highlightIndex].GetComponent<Image>().color = Color.red;
         currentHiglight = highlightIndex;
-    }
-    public void SetEquipments(EquipmentInfoStruct[] list)
-    {
-        equipmentText.text = list.ToString();
     }
 }

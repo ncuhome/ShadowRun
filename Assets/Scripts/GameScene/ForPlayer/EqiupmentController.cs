@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// ¹ÒÔØµ½¿É²Ù¿Ø½ÇÉ«ÉÏ£¬
-/// ²»Ìá¹©¾²Ì¬£¬
-/// ÓÐÒ»¸ö¾²Ì¬½á¹¹ÌåArr¼ÇÂ¼×°±¸ÐÅÏ¢
+/// ï¿½ï¿½ï¿½Øµï¿½ï¿½É²Ù¿Ø½ï¿½É«ï¿½Ï£ï¿½
+/// ï¿½ï¿½ï¿½á¹©ï¿½ï¿½Ì¬ï¿½ï¿½
+/// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½á¹¹ï¿½ï¿½Arrï¿½ï¿½Â¼×°ï¿½ï¿½ï¿½ï¿½Ï¢
 /// </summary>
 public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipmentPlayActions
 {
@@ -35,7 +35,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
         _inputActions.EquipmentPlay.Disable();
     }
     /// <summary>
-    /// ¼ì²â×°±¸Åö×²
+    /// ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½×²
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,39 +52,38 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
     }
     
     /// <summary>
-    /// Ê°È¡×°±¸
+    /// Ê°È¡×°ï¿½ï¿½
     /// </summary>
-    /// <param name="collision">±»Åö×²µÄ×°±¸</param>
+    /// <param name="collision">ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½×°ï¿½ï¿½</param>
     private void PickUp(Collider2D collision)
     {
       
         GameObject collidedObject = collision.gameObject;
 
-        // ¼ì²éGameObjectÊÇ·ñÊµÏÖÁËEquipments½Ó¿Ú
+        // ï¿½ï¿½ï¿½GameObjectï¿½Ç·ï¿½Êµï¿½ï¿½ï¿½ï¿½Equipmentsï¿½Ó¿ï¿½
         IEquipmentTex equipment = collidedObject.GetComponent<IEquipmentTex>();
         if (equipment != null)
         {
       
-           //¸øµÚÒ»¸ö·Ç¿ÕÔªËØ¸³Öµ
+           //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ç¿ï¿½Ôªï¿½Ø¸ï¿½Öµ
           for(int i = 0; i < EquipConstantsManager.MAX_EQUIPMENT_CAP; i++)
             {             
                 if (equipmentArr[i].equipmentPreb == null)
                 {
                     equipmentArr[i] = equipment.infoStruct;
                     currentEquipCapcity++;
-                    //¸üÐÂ×°±¸À¸
+                    //ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½
                     EquipmentUIController.instance.SetEquipmentTex(i, collidedObject.GetComponent<SpriteRenderer>().sprite);
                     break;
                 }
                 //Debug.Log(equipmentArr[i].prebPath);
             }
-          //¸üÐÂUI
-            EquipmentUIController.instance.SetEquipments(equipmentArr);
+          //ï¿½ï¿½ï¿½ï¿½UI           
             Destroy(collidedObject);
         }
         else
         {
-            Debug.LogError("no Script£¡");
+            Debug.LogError("no Scriptï¿½ï¿½");
         }
 
 
@@ -92,17 +91,17 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
 
 
     /// <summary>
-    /// ÊµÀý»¯×°±¸¶ÔÏó£¬Ê¹ÓÃuse£¨£©
-    /// ¸üÐÂcurrentEquipmentCapºÍUIManager
+    /// Êµï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½useï¿½ï¿½ï¿½ï¿½
+    /// ï¿½ï¿½ï¿½ï¿½currentEquipmentCapï¿½ï¿½UIManager
     /// </summary>
     private void EquipmentUse()
     {
         //Debug.Log("getDown");
         if (equipmentArr[currentEquipNum].equipmentPreb != null)
         {
-            //¸ù¾Ý½á¹¹Ìå¼ÓÔØÔ¤ÖÆÌå
+            //ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½
             GameObject equip = Instantiate(equipmentArr[currentEquipNum].equipmentPreb);
-            //µÃµ½Ô¤ÖÆÌå½Å±¾
+            //ï¿½Ãµï¿½Ô¤ï¿½ï¿½ï¿½ï¿½Å±ï¿½
             var equipImpl = equip.GetComponent<IEquipmentPerb>();
             if (equipImpl == null)
             {
@@ -113,8 +112,7 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
             equipmentArr[currentEquipNum].equipmentPreb = null;
             currentEquipCapcity--;
 
-            //¸üÐÂUI
-            EquipmentUIController.instance.SetEquipments(equipmentArr);
+            //ï¿½ï¿½ï¿½ï¿½UI
             EquipmentUIController.instance.RemoveEquipment(currentEquipNum);
         }
 

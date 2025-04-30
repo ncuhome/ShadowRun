@@ -23,7 +23,6 @@ public class Following : MonoBehaviour
             if(y_lock)
             {
                 targetPos = new Vector3(target.position.x,0) + new Vector3(offset.x,offset.y,0);
-                Debug.Log(target.position.x+"y_lock");
             }
             else
             {
