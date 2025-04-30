@@ -305,7 +305,7 @@ MonoBehaviour:
   - {fileID: 5558358704164232324, guid: 58b478eefc277b941a41701820aeffa7, type: 3}
   - {fileID: 7792317112138773549, guid: a15250c04e230e503b4210f5519b2f76, type: 3}
   - {fileID: 8764869840308317625, guid: f3d0add2fb8413732bfc81771f8c22d7, type: 3}
-  - {fileID: 7757370545628337109, guid: 594c41c6bcc52094abc2cb8fd5d5edc0, type: 3}
+  - {fileID: 1686832291718338678, guid: b3af367eda7143a78ad4a5180e0c9c70, type: 3}
   firstMap: {fileID: 767145477859232470}
 --- !u!1 &80351828
 GameObject:
