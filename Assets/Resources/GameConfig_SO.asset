@@ -17,3 +17,4 @@ MonoBehaviour:
   minLight: 0.01
   hp: 50
   deadDistance: 5
+  playerHeight: -10
