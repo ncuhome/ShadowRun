@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class JumpingImpl : MonoBehaviour,IEquipmentPerb
 {
     private float jumpHeight;
-    private CharcterAction playerAct;
+    private CharacterAction_SO playerAct;
     private Following following;
 
     public void Init(Transform playerTransform)
     {
         transform.position = playerTransform.position;
-        playerAct = playerTransform.GetComponent<CharcterAction>();
+        playerAct = Resources.Load<CharacterAction_SO>("CharacterAction_SO");
         jumpHeight = playerAct.jumpHeight;
 
         following = transform.GetComponent<Following>();
@@ -25,7 +26,7 @@ public class JumpingImpl : MonoBehaviour,IEquipmentPerb
 
         yield return new WaitForSeconds(EquipConstantsManager.EQUIPMENT_JUMP_MAX_TIME);
 
-        //»¹Ô­
+        //ï¿½ï¿½Ô­
         playerAct.jumpHeight = jumpHeight;
         Destroy(gameObject);
 

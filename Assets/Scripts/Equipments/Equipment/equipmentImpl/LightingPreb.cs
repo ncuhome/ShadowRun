@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class LightingImpl : MonoBehaviour,IEquipmentPerb
 {
     private Rigidbody2D rb;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Following : MonoBehaviour
 {
-
+    [Header("Target")]
     public Transform target;
     public bool y_lock = false;
     [SerializeField] Vector2 offset;
