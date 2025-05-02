@@ -25,6 +25,9 @@ public class LoadingPanelController : MonoBehaviour
             if (operation.progress >= 0.9f)
             {
                 SetSliderDone();
+                #if UNITY_ANDROID || UNITY_IOS
+                if (Input.touchCount > 0&& Input.GetTouch(0).phase==UnityEngine.TouchPhase.Began) operation.allowSceneActivation = true;
+                #endif
                 if (Keyboard.current.anyKey.isPressed) operation.allowSceneActivation = true;
             }
             yield return null;
