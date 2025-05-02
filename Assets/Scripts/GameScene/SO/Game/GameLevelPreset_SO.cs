@@ -9,6 +9,7 @@ public class GameLevelPreset_SO : ScriptableObject
         public int trigglerScore;
         public string levelName;
         public float darkSpeed;
+        public float blackChaseSpeed;
         public float minLight;
         public float deadDistance;
         public float moveForwardSpeed;

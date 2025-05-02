@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Chasing : MonoBehaviour
 {
-    public float speed;
-    public Vector2 moveDir;
+    private GameConfig_SO gameConfig_SO;
+    private Vector2 moveDir = new Vector2(1, 0);
     private Rigidbody2D rb;
-    // Start is called before the first frame update
+    void Awake()
+    {
+        gameConfig_SO = Resources.Load("GameConfig_SO") as GameConfig_SO;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,6 +19,6 @@ public class Chasing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = moveDir.normalized * speed;
+        rb.velocity = moveDir.normalized * gameConfig_SO.blackChaseSpeed;
     }
 }

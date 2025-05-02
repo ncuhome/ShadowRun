@@ -4,8 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConfig_SO", menuName = "GameConfig/GameConfig_SO")]
 public class GameConfig_SO : ScriptableObject
 {
-    [Header("黑暗速度")]
+    [Header("四周黑暗速度")]
     public float darkSpeed;
+    [Header("黑暗追逐加速")]
+    public float blackChaseSpeed;
     [Header("最大的屏幕黑暗数值")]
     public float maxDark;
     [Header("光明状态最低光照浓度")]

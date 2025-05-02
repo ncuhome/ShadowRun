@@ -6,15 +6,15 @@ public class EquipConstantsManager
 {
     public static int MAX_EQUIPMENT_CAP = 3;
     
-    public static float EQUIP_THROW_FORCE = 10;
+    public static float EQUIP_THROW_FORCE = 12;
 
-    //×°±¸½¬¹û
+    //×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static float LIGHTING_EXIT_TIME = 0.6f;
 
-    //×°±¸×£¸£
+    //×°ï¿½ï¿½×£ï¿½ï¿½
     public static float BLESSING_EXIT_TIME = 5.0f;
 
-    //×°±¸ÌøÌø²Ý
+    //×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static float EQUIPMENT_JUMP_HEIGHT = 10f;
     public static float EQUIPMENT_JUMP_MAX_TIME = 5f;
 }

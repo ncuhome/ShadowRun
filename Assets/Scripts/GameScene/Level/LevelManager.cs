@@ -61,6 +61,7 @@ public class LevelManager : MonoBehaviour
     {
         //更新难度
         gameConfig_SO.darkSpeed = currentLevelData.darkSpeed;
+        gameConfig_SO.blackChaseSpeed = currentLevelData.blackChaseSpeed;
         gameConfig_SO.minLight= currentLevelData.minLight;
         gameConfig_SO.deadDistance= currentLevelData.deadDistance;
         characterAction_SO.moveForwardSpeed = currentLevelData.moveForwardSpeed;
