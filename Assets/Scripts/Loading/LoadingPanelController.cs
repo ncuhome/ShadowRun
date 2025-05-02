@@ -12,6 +12,7 @@ public class LoadingPanelController : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         StartCoroutine(StartLoadScene(sceneName));
+        Debug.Log(Time.timeScale);
     }
     private IEnumerator StartLoadScene(string sceneName)
     {

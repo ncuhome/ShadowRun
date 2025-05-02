@@ -36,6 +36,10 @@ public class UIEvent_SO : ScriptableObject
     {
         _CloseDeathMenu?.Invoke();
     }
+    public void Test()
+    {
+        Debug.Log("Test");
+    }
     public void GC()
     {
         _PauseGame = null;

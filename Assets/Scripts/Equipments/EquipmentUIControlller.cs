@@ -76,11 +76,15 @@ public class EquipmentUIController : MonoBehaviour
     /// </summary>
     /// <param name="equipmentIndex">װ���±�</param>
     /// <param name="equipemtTex">װ��ͼ</param>
-    public void SetEquipmentTex(int equipmentIndex, Sprite equipemtTex)
+    public void SetEquipmentTex(int equipmentIndex, Sprite equipemtTex,EquipmentInfoStruct infoStruct)
     {
         GameObject equipment = new GameObject(equipmentIndex.ToString());
         Image image = equipment.AddComponent<Image>();
         Transform newEquipemtTransform = equipmentTabs[equipmentIndex].transform;
+        
+        #if UNITY_ANDROID || UNITY_IOS
+            newEquipemtTransform.GetComponent<EquipTabInputController>().infoStruct=infoStruct;
+        #endif
         if(image != null)
         {
             image.sprite = equipemtTex;

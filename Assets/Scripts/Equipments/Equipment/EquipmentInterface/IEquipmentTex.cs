@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// ËùÓÐ×°±¸ÌùÍ¼µÄ½Ó¿Ú£¬ÒªÇóÃ¿¸ö×°±¸±»Ê°ÆðÖ®Ç°¶¼±ØÐë´øÓÐÔ¤ÖÆÌåÐÅÏ¢
+/// ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ä½Ó¿Ú£ï¿½Òªï¿½ï¿½Ã¿ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Ê°ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 /// </summary>
 public interface IEquipmentTex 
 {
@@ -11,10 +11,11 @@ public interface IEquipmentTex
 }
 
 /// <summary>
-/// ÓÃÓÚ´æ·Å×°±¸Ô¤ÖÆÌåµÄÐÅÏ¢
+/// ï¿½ï¿½ï¿½Ú´ï¿½ï¿½×°ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 /// </summary>
 public struct EquipmentInfoStruct
 {
     public GameObject equipmentPreb;
-  
+    public int equipmentID;
+    
 }

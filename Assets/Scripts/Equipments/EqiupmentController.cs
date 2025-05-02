@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// ���ص��ɲٿؽ�ɫ�ϣ�
@@ -15,8 +16,26 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
     private EquipmentInfoStruct[] equipmentArr;
     public int currentEquipNum;
     private int currentEquipCapcity;
+    #if UNITY_ANDROID || UNITY_IOS
+    public Button fireButton;
+    #endif
     private CharacterInputSystem _inputActions;
-    // Start is called before the first frame update
+    private static EqiupmentController _instance;
+    public static EqiupmentController instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<EqiupmentController>();
+                if (_instance == null)
+                {
+                    Debug.LogError("no EqiupmentController in the scene");
+                }
+            }
+            return _instance;
+        }
+    }
     void Awake()
     {
         _inputActions = new CharacterInputSystem();
@@ -28,6 +47,9 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
 
     private void OnEnable()
     {
+        #if UNITY_ANDROID || UNITY_IOS
+            fireButton.onClick.AddListener(OnFireButton);
+        #endif
         _inputActions.EquipmentPlay.Enable();
     }
     private void OnDisable()
@@ -64,16 +86,16 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
         IEquipmentTex equipment = collidedObject.GetComponent<IEquipmentTex>();
         if (equipment != null)
         {
-      
-           //����һ���ǿ�Ԫ�ظ�ֵ
           for(int i = 0; i < EquipConstantsManager.MAX_EQUIPMENT_CAP; i++)
             {             
                 if (equipmentArr[i].equipmentPreb == null)
                 {
-                    equipmentArr[i] = equipment.infoStruct;
+                    equipmentArr[i] = new EquipmentInfoStruct(){
+                        equipmentPreb = equipment.infoStruct.equipmentPreb,
+                        equipmentID = i
+                    };
                     currentEquipCapcity++;
-                    //����װ����
-                    EquipmentUIController.instance.SetEquipmentTex(i, collidedObject.GetComponent<SpriteRenderer>().sprite);
+                    EquipmentUIController.instance.SetEquipmentTex(i, collidedObject.GetComponent<SpriteRenderer>().sprite,equipmentArr[i]);
                     break;
                 }
                 //Debug.Log(equipmentArr[i].prebPath);
@@ -117,6 +139,26 @@ public class EqiupmentController : MonoBehaviour,CharacterInputSystem.IEquipment
         }
 
     }
+    #if UNITY_ANDROID || UNITY_IOS
+    private void OnFireButton()
+    {
+        EquipmentUse();
+        StartCoroutine(OnFireButtonColor());
+    }
+    private IEnumerator OnFireButtonColor()
+    {
+        fireButton.image.color = new Color(255, 255, 255, 160);
+        yield return new WaitForSeconds(0.2f);
+        fireButton.image.color = new Color(255, 255, 255, 100);
+    }
+    public void SetCurrentEquipNum(int num)
+    {
+        if (num > EquipConstantsManager.MAX_EQUIPMENT_CAP) return;
+        currentEquipNum = num;
+        EquipmentUIController.instance.Highlight(currentEquipNum);
+    }
+
+    #endif
 
     public void OnUseEquip(InputAction.CallbackContext context)
     {
