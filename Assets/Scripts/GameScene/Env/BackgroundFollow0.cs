@@ -35,7 +35,8 @@ public class BackgroundFollow0 : MonoBehaviour
     void ParallaxX()
     {
         float distance = (camera.transform.position - lastCameraPos).x;
-        transform.Translate(new Vector3(distance * (1-parallax), 0, 0));
+        Vector3 targetPos = transform.position+new Vector3(distance * (1-parallax), 0, 0);
+        transform.position=Vector3.Lerp(transform.position, targetPos, Time.deltaTime*10);
         //relat distance trans 
         float relaDistance = (camera.transform.position - leftBg.transform.position).x;
         
