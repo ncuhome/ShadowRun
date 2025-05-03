@@ -60,7 +60,7 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
     private void Awake()
     {
         _inputActions = new CharacterInputSystem();
-        _inputActions.GamePlay.SetCallbacks(this); // ����ǰ�����Ϊ�ص�������
+        _inputActions.GamePlay.SetCallbacks(this);
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
@@ -256,9 +256,12 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
 
     IEnumerator OnJumpingState()
     {
+        float timer=0;
         while (jumpState == JumpState.Jumping)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            timer += Time.deltaTime;
+            float jumpTimeLerp = timer/jumpMaxTime; 
+            rb.velocity = new Vector2(rb.velocity.x, jumpHeight * (1 - jumpTimeLerp));
             jumpingTimer += Time.deltaTime;
             if (jumpingTimer >= jumpMaxTime)
             {

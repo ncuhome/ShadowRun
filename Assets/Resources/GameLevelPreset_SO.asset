@@ -23,7 +23,7 @@ MonoBehaviour:
     moveBackSpeed: 3
     fixSpeed: 2
     jumpMaxTime: 0.5
-    jumpHeight: 8
+    jumpHeight: 12
   levelDatas:
   - trigglerScore: 200
     levelName: level1
@@ -35,7 +35,7 @@ MonoBehaviour:
     moveBackSpeed: 3
     fixSpeed: 2
     jumpMaxTime: 0.5
-    jumpHeight: 10
+    jumpHeight: 14
   - trigglerScore: 500
     levelName: 
     darkSpeed: 2.5
@@ -46,7 +46,7 @@ MonoBehaviour:
     moveBackSpeed: 4
     fixSpeed: 3
     jumpMaxTime: 0.5
-    jumpHeight: 8
+    jumpHeight: 14
   - trigglerScore: 800
     levelName: 
     darkSpeed: 2.5
@@ -57,4 +57,4 @@ MonoBehaviour:
     moveBackSpeed: 4
     fixSpeed: 3
     jumpMaxTime: 0.5
-    jumpHeight: 9
+    jumpHeight: 15
