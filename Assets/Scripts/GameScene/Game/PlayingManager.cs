@@ -12,6 +12,7 @@ public class PlayingManager : MonoBehaviour
         gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
         gameConfig_SO.hp = gameConfig_SO.maxDark;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        Time.timeScale = 1;
     }
     void Update()
     {

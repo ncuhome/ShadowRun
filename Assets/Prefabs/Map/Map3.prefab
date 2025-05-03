@@ -706,8 +706,8 @@ Transform:
   - {fileID: 2382990671493531399}
   - {fileID: 3227257886238740644}
   - {fileID: 8380032847130339044}
-  - {fileID: 3385735013015114817}
   - {fileID: 2983405057516264237}
+  - {fileID: 3385735013015114817}
   - {fileID: 2607331691681840426}
   - {fileID: 8314531934947676408}
   - {fileID: 4131523104440454138}
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.63
+  m_Intensity: 4.38
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -990,8 +990,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1.163445
-  m_PointLightOuterRadius: 1.4950273
+  m_PointLightInnerRadius: 1.3946751
+  m_PointLightOuterRadius: 1.7988081
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4.56
+  m_Intensity: 5.04
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1388,8 +1388,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1.9808468
-  m_PointLightOuterRadius: 3.330445
+  m_PointLightInnerRadius: 3.0328882
+  m_PointLightOuterRadius: 4.1363163
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

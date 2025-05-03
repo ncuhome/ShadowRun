@@ -9,7 +9,7 @@ public class EquipConstantsManager
     public static float EQUIP_THROW_FORCE = 6f;
 
     //װ������
-    public static float LIGHTING_EXIT_TIME = 0.6f;
+    public static float LIGHTING_EXIT_TIME = 0.4f;
 
     //װ��ף��
     public static float BLESSING_EXIT_TIME = 5.0f;

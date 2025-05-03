@@ -9,6 +9,10 @@ public class LoadingPanelController : MonoBehaviour
 {
     public Slider slider;
     public TextMeshProUGUI text;
+    void Awake()
+    {
+        Time.timeScale = 1;
+    }
     public void LoadScene(string sceneName)
     {
         StartCoroutine(StartLoadScene(sceneName));
