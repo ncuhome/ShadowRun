@@ -6,7 +6,7 @@ public class EquipConstantsManager
 {
     public static int MAX_EQUIPMENT_CAP = 3;
     
-    public static float EQUIP_THROW_FORCE = 12;
+    public static float EQUIP_THROW_FORCE = 6f;
 
     //װ������
     public static float LIGHTING_EXIT_TIME = 0.6f;

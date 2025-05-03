@@ -13,13 +13,18 @@ public class LightingImpl : MonoBehaviour,IEquipmentPerb
     {
         transform.position = playerTransform.position;
         rb.velocity = playerTransform.GetComponent<Rigidbody2D>().velocity;
-        Vector3 mousePotion = Mouse.current.position.ReadValue();
-        if (mousePotion == null)
-        {
-            rb.AddForce(new Vector2(1,0) * EquipConstantsManager.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
-        }
- 
+       
+        #if UNITY_ANDROID || UNITY_IOS
+            rb.AddForce(new Vector2(1,0).normalized * EquipConstantsManager.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
+        #else
+            Vector3 mousePotion = Mouse.current.position.ReadValue();
+            if (mousePotion == null)
+            {
+                rb.AddForce(new Vector2(1,0.8) * EquipConstantsManager.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
+            }
         rb.AddForce(new Vector2(mousePotion.x, mousePotion.y).normalized * EquipConstantsManager.EQUIP_THROW_FORCE, ForceMode2D.Impulse);
+        #endif
+       
 
     }
 
