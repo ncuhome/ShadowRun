@@ -5,16 +5,16 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 /// <summary>
-/// ¹ÒÔØÔÚÄ¿±êÉÏµÄ¹âÕÕ¼ì²â
-/// Ìá¹©¾²Ì¬instance
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ÏµÄ¹ï¿½ï¿½Õ¼ï¿½ï¿½
+/// ï¿½á¹©ï¿½ï¿½Ì¬instance
 /// </summary>
 public class LightDetect : MonoBehaviour
 {
 
-    [Header("¾²Ì¬¹âÕÕÊý×é")]
+    [Header("ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public Light2D[] lightSources;
-    [Header("¾²Ì¬¹âÕÕ¼ì²é·¶Î§")]
-    public float maxDistance = 10.0f;
+    [Header("ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½Õ¼ï¿½é·¶Î§")]
+    public float maxDistance = 20.0f;
     private Camera mainCamera;
     private static LightDetect _instance;
     public static LightDetect instance { get { 
@@ -27,6 +27,7 @@ public class LightDetect : MonoBehaviour
         } }
     private SpriteRenderer targetRenderer;
     private List<Light2D> moveLights;
+    private Rect viewportBounds;
     [HideInInspector] public static float totalIntensity;
 
     void Awake()
@@ -35,6 +36,7 @@ public class LightDetect : MonoBehaviour
         totalIntensity = 0.0f;
         moveLights = new List<Light2D>();
         mainCamera = Camera.main;
+        viewportBounds = GetViewportBounds(mainCamera);
     }
 
     void Update()
@@ -62,10 +64,10 @@ public class LightDetect : MonoBehaviour
         moveLights.Clear();
         foreach (GameObject lightObj in allLightObjects)
         {
-            Light2D light = lightObj.GetComponent<Light2D>();
+            Light2D light = lightObj.GetComponent<Light2D>();           
             if (light != null)
             {
-                if (IsWithinViewport(light, GetViewportBounds(mainCamera)))
+                if (IsWithinViewport(light, viewportBounds))
                 {
                     moveLights.Add(light);
                 }
@@ -77,7 +79,7 @@ public class LightDetect : MonoBehaviour
 
     private void GetLightingIntense()
     {
-        //»¹Ô­
+        //ï¿½ï¿½Ô­
         totalIntensity = 0f;
         GetMoveLightIntense();
         Light2D[] allLight = lightSources.Concat(moveLights.ToArray()).ToArray();
@@ -96,17 +98,26 @@ public class LightDetect : MonoBehaviour
                         Vector3 directionToLight = lightPosition - position;
                         float distanceToLight = directionToLight.magnitude;
 
-                        // Ö»¼ÆËã¾àÀë½ÇÉ«Ò»¶¨·¶Î§ÄÚµÄ¹âÔ´
+                        // Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«Ò»ï¿½ï¿½ï¿½ï¿½Î§ï¿½ÚµÄ¹ï¿½Ô´
                         if (distanceToLight <= maxDistance)
                         {
 
-                            // ¼ÆËã¹âÕÕË¥¼õ
-                            float attenuation = 1.0f - Mathf.Clamp01(distanceToLight / light.pointLightOuterRadius);
+                            // å…‰ç…§è¡°å‡
+                            float outerRadius;
+                            if (light.lightType == Light2D.LightType.Sprite)
+                            {
+                                outerRadius = light.transform.lossyScale.x;
+                            }
+                            else
+                            {
+                                outerRadius = light.pointLightOuterRadius;
+                            }
+                            float attenuation = 1.0f - Mathf.Clamp01(distanceToLight / outerRadius);
 
-                            // »ñÈ¡¹âÕÕÑÕÉ«ºÍÇ¿¶È
+                            // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ç¿ï¿½ï¿½
                             float intensity = light.intensity * attenuation;
 
-                            // ÀÛ¼Ó¹âÕÕÇ¿¶È
+                            // ï¿½Û¼Ó¹ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½
                             totalIntensity += intensity;
                             //Debug.Log(light + ":" + totalIntensity.ToString());
                         }
