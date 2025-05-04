@@ -27,7 +27,6 @@ public class LightDetect : MonoBehaviour
         } }
     private SpriteRenderer targetRenderer;
     private List<Light2D> moveLights;
-    private Rect viewportBounds;
     [HideInInspector] public static float totalIntensity;
 
     void Awake()
@@ -36,7 +35,6 @@ public class LightDetect : MonoBehaviour
         totalIntensity = 0.0f;
         moveLights = new List<Light2D>();
         mainCamera = Camera.main;
-        viewportBounds = GetViewportBounds(mainCamera);
     }
 
     void Update()
@@ -64,12 +62,12 @@ public class LightDetect : MonoBehaviour
         moveLights.Clear();
         foreach (GameObject lightObj in allLightObjects)
         {
-            Light2D light = lightObj.GetComponent<Light2D>();           
+            Light2D light = lightObj.GetComponent<Light2D>();          
             if (light != null)
             {
-                if (IsWithinViewport(light, viewportBounds))
+                if (IsWithinViewport(light, GetViewportBounds(mainCamera)))
                 {
-                    moveLights.Add(light);
+                    moveLights.Add(light);                   
                 }
             }
         }
@@ -97,8 +95,6 @@ public class LightDetect : MonoBehaviour
                         Vector3 lightPosition = light.transform.position;
                         Vector3 directionToLight = lightPosition - position;
                         float distanceToLight = directionToLight.magnitude;
-
-                        // ֻ��������ɫһ����Χ�ڵĹ�Դ
                         if (distanceToLight <= maxDistance)
                         {
 
@@ -107,17 +103,14 @@ public class LightDetect : MonoBehaviour
                             if (light.lightType == Light2D.LightType.Sprite)
                             {
                                 outerRadius = light.transform.lossyScale.x;
+                                Debug.Log("outerRadius:" + outerRadius);
                             }
                             else
                             {
                                 outerRadius = light.pointLightOuterRadius;
                             }
                             float attenuation = 1.0f - Mathf.Clamp01(distanceToLight / outerRadius);
-
-                            // ��ȡ������ɫ��ǿ��
                             float intensity = light.intensity * attenuation;
-
-                            // �ۼӹ���ǿ��
                             totalIntensity += intensity;
                             //Debug.Log(light + ":" + totalIntensity.ToString());
                         }

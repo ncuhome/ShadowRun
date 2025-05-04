@@ -5,16 +5,31 @@ using UnityEngine;
 public class FullScreenDark : MonoBehaviour
 {
     public Material mat;
-    public static FullScreenDark instanse;
+    public static FullScreenDark _instance;
+    public static FullScreenDark instance{
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<FullScreenDark>();
+            }
+            return _instance;
+        }
+    }
     public float darkIntense;
+    public float maxDarkIntense;
     private GameConfig_SO gameConfig_SO;
 
     void Awake()
     {
         //mat = GetComponent<Material>();
         darkIntense = 0;
-        instanse = this;
         gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
+        if (gameConfig_SO == null)
+        {
+            Debug.LogError("GameConfig_SO not found");
+        }
+        maxDarkIntense = gameConfig_SO.maxDark;
     }
     private void OnEnable()
     {
@@ -31,7 +46,8 @@ public class FullScreenDark : MonoBehaviour
     {
         if (darkIntense > 0)
         {
-            darkIntense -= gameConfig_SO.darkSpeed * Time.deltaTime;
+            float speed = Mathf.Lerp(gameConfig_SO.darkSpeed,gameConfig_SO.darkSpeed*10, darkIntense / maxDarkIntense);
+            darkIntense -= speed * Time.deltaTime;
         }
        
     }
@@ -39,7 +55,7 @@ public class FullScreenDark : MonoBehaviour
     public  void NonLighting()
     {
 
-        darkIntense += gameConfig_SO.darkSpeed * Time.deltaTime;
-
+        float speed = Mathf.Lerp(gameConfig_SO.darkSpeed,gameConfig_SO.darkSpeed*10, darkIntense / maxDarkIntense);
+        darkIntense += speed * Time.deltaTime;
     }
 }

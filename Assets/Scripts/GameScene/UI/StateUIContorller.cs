@@ -31,14 +31,14 @@ public class StateUIContorller : MonoBehaviour
     {
         SetState("state:lighting");
         if(gameConfig_SO.hp<gameConfig_SO.maxDark)
-            gameConfig_SO.hp += gameConfig_SO.darkSpeed * Time.deltaTime;
+            gameConfig_SO.hp = gameConfig_SO.maxDark - FullScreenDark.instance.darkIntense;
         SetHpUI();
     }
     private void SetNonLightState()
     {
         SetState("state:nonlight");
         if (gameConfig_SO.hp > 0)
-            gameConfig_SO.hp -= gameConfig_SO.darkSpeed * Time.deltaTime;
+            gameConfig_SO.hp = gameConfig_SO.maxDark - FullScreenDark.instance.darkIntense;
         SetHpUI();
     }
 

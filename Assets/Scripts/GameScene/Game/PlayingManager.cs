@@ -30,7 +30,7 @@ public class PlayingManager : MonoBehaviour
         else 
         {
             CharacterEventManager.instance._OnInDark.Invoke();
-            if(FullScreenDark.instanse.darkIntense>=gameConfig_SO.maxDark && !isDead)
+            if(FullScreenDark.instance.darkIntense>=gameConfig_SO.maxDark && !isDead)
             {
                 isDead = true;
                 CharacterEventManager.instance._OnDead.Invoke();

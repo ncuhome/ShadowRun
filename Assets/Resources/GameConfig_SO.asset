@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: GameConfig_SO
   m_EditorClassIdentifier: 
   darkSpeed: 1
-  maxDark: 50
-  minLight: 0.01
-  hp: 50
+  blackChaseSpeed: 3
+  maxDark: 30
+  minLight: 0.2
+  hp: 46.662697
   deadDistance: 5
   playerHeight: -10

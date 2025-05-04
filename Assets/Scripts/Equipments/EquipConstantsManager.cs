@@ -15,6 +15,6 @@ public class EquipConstantsManager
     public static float BLESSING_EXIT_TIME = 5.0f;
 
     //װ��������
-    public static float EQUIPMENT_JUMP_HEIGHT = 10f;
+    public static float EQUIPMENT_JUMP_HEIGHT = 20f;
     public static float EQUIPMENT_JUMP_MAX_TIME = 5f;
 }

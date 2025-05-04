@@ -5437,7 +5437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 9117635f27d302648baf0d5f3ef49182, type: 2}
-  darkIntense: 0
+  darkIntense: 44.6
 --- !u!1 &1298488306
 GameObject:
   m_ObjectHideFlags: 0
