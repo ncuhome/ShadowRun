@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6bdce26859fab42af65da1aef11548, type: 3}
   m_Name: GameConfig_SO
   m_EditorClassIdentifier: 
-  darkSpeed: 1
+  darkSpeed: 0.5
   blackChaseSpeed: 3
-  maxDark: 30
+  maxDark: 20
   minLight: 0.2
-  hp: 46.662697
+  hp: 14.963575
   deadDistance: 5
   playerHeight: -10

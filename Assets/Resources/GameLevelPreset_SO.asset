@@ -15,7 +15,7 @@ MonoBehaviour:
   defualtLevelData:
     trigglerScore: 0
     levelName: defualt
-    darkSpeed: 1
+    darkSpeed: 0.5
     blackChaseSpeed: 3
     minLight: 0.2
     deadDistance: 5
@@ -27,7 +27,7 @@ MonoBehaviour:
   levelDatas:
   - trigglerScore: 200
     levelName: level1
-    darkSpeed: 2
+    darkSpeed: 0.8
     blackChaseSpeed: 3
     minLight: 0.5
     deadDistance: 5
@@ -38,7 +38,7 @@ MonoBehaviour:
     jumpHeight: 14
   - trigglerScore: 500
     levelName: 
-    darkSpeed: 2.5
+    darkSpeed: 0.8
     blackChaseSpeed: 5
     minLight: 1
     deadDistance: 5
@@ -49,7 +49,7 @@ MonoBehaviour:
     jumpHeight: 14
   - trigglerScore: 800
     levelName: 
-    darkSpeed: 2.5
+    darkSpeed: 1
     blackChaseSpeed: 5.5
     minLight: 1.5
     deadDistance: 5

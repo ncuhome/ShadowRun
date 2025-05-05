@@ -103,7 +103,7 @@ public class LightDetect : MonoBehaviour
                             if (light.lightType == Light2D.LightType.Sprite)
                             {
                                 outerRadius = light.transform.lossyScale.x;
-                                Debug.Log("outerRadius:" + outerRadius);
+                                //Debug.Log("outerRadius:" + outerRadius);
                             }
                             else
                             {

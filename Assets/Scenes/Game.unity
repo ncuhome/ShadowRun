@@ -2579,7 +2579,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.1
+  m_Intensity: 0.45
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -3778,7 +3778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &914348135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5438,6 +5438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 9117635f27d302648baf0d5f3ef49182, type: 2}
   darkIntense: 44.6
+  maxDarkIntense: 0
 --- !u!1 &1298488306
 GameObject:
   m_ObjectHideFlags: 0
@@ -8557,6 +8558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 770746452}
     m_Modifications:
+    - target: {fileID: 2811588971579787183, guid: 58b478eefc277b941a41701820aeffa7, type: 3}
+      propertyPath: m_BlendStyleIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5693150951337680894, guid: 58b478eefc277b941a41701820aeffa7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.008224
