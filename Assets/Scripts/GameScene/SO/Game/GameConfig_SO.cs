@@ -8,6 +8,8 @@ public class GameConfig_SO : ScriptableObject
     public float darkSpeed;
     [Header("黑暗追逐加速")]
     public float blackChaseSpeed;
+    [Header("最大黑影距离")]
+    public float maxBlackDistance;
     [Header("最大的屏幕黑暗数值")]
     public float maxDark;
     [Header("光明状态最低光照浓度")]
