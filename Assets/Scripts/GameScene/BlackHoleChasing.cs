@@ -11,7 +11,7 @@ public class Chasing : MonoBehaviour
     private Transform thisTransform;
     void Awake()
     {
-        gameConfig_SO = Resources.Load("GameConfig_SO") as GameConfig_SO;
+        gameConfig_SO = GameConfigManager.instance.gameConfig_SO;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         thisTransform = transform;
     }

@@ -28,7 +28,7 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
         get {
             if (!_characterAction_SO)
             {
-                _characterAction_SO = Resources.Load("CharacterAction_SO") as CharacterAction_SO;
+                _characterAction_SO = GameConfigManager.instance.characterAction_SO;
                 if (!_characterAction_SO) Debug.LogError("no characterAction_SO");
             }
             return _characterAction_SO;

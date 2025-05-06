@@ -13,9 +13,9 @@ public class LevelManager : MonoBehaviour
     private bool isMaxLevel = false;
     void Awake()
     {
-        gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
-        characterAction_SO = Resources.Load<CharacterAction_SO>("CharacterAction_SO");  
-        gameLevelPreset_SO = Resources.Load<GameLevelPreset_SO>("GameLevelPreset_SO");
+        gameConfig_SO = GameConfigManager.instance.gameConfig_SO;
+        characterAction_SO = GameConfigManager.instance.characterAction_SO;;  
+        gameLevelPreset_SO = GameConfigManager.instance.gameLevelPreset_SO;
         currentLevelData = gameLevelPreset_SO.defualtLevelData;
         nextLevelData = gameLevelPreset_SO.levelDatas[nextLevelDataIndex];
         UpdateLeveData();

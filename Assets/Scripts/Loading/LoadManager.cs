@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadManager : MonoBehaviour
+public class LoadManager 
 {
     private static LoadingPanelController loadingPanelController;
-    public static string loadSceneName;
-    public static void LoadingScene(string sceneName)
+    public static SceneEnum loadSceneEnum;
+    public static void LoadingScene(SceneEnum sceneName)
     {
-        loadSceneName = sceneName;
+        loadSceneEnum = sceneName;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene("Loading");
     }
@@ -19,7 +19,7 @@ public class LoadManager : MonoBehaviour
             if (panel != null)
             {
                 loadingPanelController = panel.GetComponent<LoadingPanelController>();
-                loadingPanelController.LoadScene(loadSceneName); 
+                loadingPanelController.LoadScene(loadSceneEnum.ToString()); 
             }
             else
             {

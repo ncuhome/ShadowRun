@@ -18,10 +18,10 @@ public class SceneController : MonoBehaviour
     }
     private void OnRestartGame()
     {
-        LoadManager.LoadingScene("Game");
+        LoadManager.LoadingScene(SceneEnum.Game);
     }
     private void OnBackToStart()
     {
-        LoadManager.LoadingScene("Start");
+        LoadManager.LoadingScene(SceneEnum.Start);
     }
 }

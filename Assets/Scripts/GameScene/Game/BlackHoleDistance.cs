@@ -9,7 +9,7 @@ public class BlackHoleDistance : MonoBehaviour
     private void Awake()
     {
         collider = GetComponent<Collider2D>();
-        gameConfig_SO=Resources.Load<GameConfig_SO>("GameConfig_SO");
+        gameConfig_SO=GameConfigManager.instance.gameConfig_SO;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

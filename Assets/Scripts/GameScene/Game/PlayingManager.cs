@@ -9,7 +9,7 @@ public class PlayingManager : MonoBehaviour
     private bool isDead = false;
     private void Awake()
     {      
-        gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
+        gameConfig_SO = GameConfigManager.instance.gameConfig_SO;
         gameConfig_SO.hp = gameConfig_SO.maxDark;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         Time.timeScale = 1;

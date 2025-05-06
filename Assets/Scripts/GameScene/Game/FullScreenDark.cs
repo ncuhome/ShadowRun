@@ -24,7 +24,7 @@ public class FullScreenDark : MonoBehaviour
     {
         //mat = GetComponent<Material>();
         darkIntense = 0;
-        gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
+        gameConfig_SO = GameConfigManager.instance.gameConfig_SO;
         if (gameConfig_SO == null)
         {
             Debug.LogError("GameConfig_SO not found");

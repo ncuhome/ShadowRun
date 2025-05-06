@@ -11,7 +11,7 @@ public class StateUIContorller : MonoBehaviour
 
     void Awake()
     {
-        gameConfig_SO = Resources.Load<GameConfig_SO>("GameConfig_SO");
+        gameConfig_SO = GameConfigManager.instance.gameConfig_SO;
     }
     private void OnEnable()
     {

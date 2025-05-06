@@ -12,7 +12,7 @@ public class JumpingImpl : MonoBehaviour,IEquipmentPerb
     public void Init(Transform playerTransform)
     {
         transform.position = playerTransform.position;
-        playerAct = Resources.Load<CharacterAction_SO>("CharacterAction_SO");
+        playerAct = GameConfigManager.instance.characterAction_SO;
         jumpHeight = playerAct.jumpHeight;
 
         following = transform.GetComponent<Following>();
