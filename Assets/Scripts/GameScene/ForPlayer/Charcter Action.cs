@@ -181,6 +181,7 @@ public class CharcterAction : MonoBehaviour,CharacterInputSystem.IGamePlayAction
         if (!isGround) return;
             jumpState = JumpState.Jumping;
         StartCoroutine(OnJumpingState());
+        
     }
     private void OnJumpButtonRelease()
     {
