@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 
 public class NoviceTrigger : MonoBehaviour
 {
-    private Image tip;
+    private Image[] tips;
     private bool isTriggered = false;
     void Awake()
     {
-        tip = GetComponentInChildren<Image>(true);
-        if (tip == null)
+        tips = GetComponentsInChildren<Image>(true);
+        if (tips == null)
         {
             Debug.LogError("find no tip image");
             return;
@@ -23,28 +23,35 @@ public class NoviceTrigger : MonoBehaviour
         {
             Debug.Log("触发了新手引导");
             Time.timeScale = 0;
-            tip.gameObject.SetActive(true);
             isTriggered = true;
+            StartCoroutine(ShowTips());          
         }
     }
-    void Update()
+ 
+    private IEnumerator ShowTips()
     {
-        if(isTriggered)
+        int i = 0;
+        GameObject tip;
+        while(i<tips.Length)
         {
-            #if UNITY_ANDROID || UNITY_IOS
+            tip = tips[i].gameObject;
+            tip.SetActive(true);
+             #if UNITY_ANDROID || UNITY_IOS
                 if (Input.touchCount > 0&& Input.GetTouch(0).phase==UnityEngine.TouchPhase.Began) 
                 {
-                    tip.gameObject.SetActive(false);
-                    gameObject.SetActive(false);
-                    Time.timeScale = 1;
+                    tip.SetActive(false);
+                    i++;                   
+                }            
+            #else
+                if (Keyboard.current.anyKey.isPressed)
+                {
+                    tips.gameObject.SetActive(false);                                
+                    i++;
                 }
             #endif
-            if (Keyboard.current.anyKey.isPressed)
-            {
-                tip.gameObject.SetActive(false);
-                gameObject.SetActive(false);
-                Time.timeScale = 1;
-            }
+            yield return null;
         }
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }
