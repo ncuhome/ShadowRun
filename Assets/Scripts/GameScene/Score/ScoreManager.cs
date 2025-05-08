@@ -43,6 +43,6 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("Record", score);
             PlayerPrefs.Save();
         }
-        Debug.Log("ScoreManager: Score saved to PlayerPrefs: " + PlayerPrefs.GetInt("Record", 0));
+        //Debug.Log("ScoreManager: Score saved to PlayerPrefs: " + PlayerPrefs.GetInt("Record", 0));
     }
 }
