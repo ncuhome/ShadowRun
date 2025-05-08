@@ -28,6 +28,13 @@ public class StartUIController : MonoBehaviour
 
     void OnStartBtn()
     {
-        LoadManager.LoadingScene(SceneEnum.Game);
+        if(PlayerPrefs.GetInt("Noviced")==0)
+        {
+            LoadManager.LoadingScene(SceneEnum.Novice);
+        }
+        else
+        {
+            LoadManager.LoadingScene(SceneEnum.Game);
+        }
     }
 }

@@ -23,6 +23,7 @@ public class FinishTrigger : MonoBehaviour
             Time.timeScale = 0;
             isTriggered = true;
             finishPanel.SetActive(true);
+            PlayerPrefs.SetInt("Noviced", 1);
         }
     }
 }
