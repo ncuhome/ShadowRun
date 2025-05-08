@@ -27,6 +27,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9717fe22f27cc9141b7ea966848ad84d
+    m_Address: Assets/AddressableResource/Equipment/EquipUsed/Blessing.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1a1a484be5b15646a8fa8822634f9ac
+    m_Address: Assets/AddressableResource/Equipment/EquipUsed/Jumping.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9919f31aa444165bdb4cac060f195e24, type: 2}
   m_SchemaSet:

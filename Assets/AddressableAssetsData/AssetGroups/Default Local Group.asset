@@ -17,13 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f9debea80d888f7e8a0cc017724230d8
   m_SerializeEntries:
-  - m_GUID: 9717fe22f27cc9141b7ea966848ad84d
-    m_Address: Assets/AddressableResource/Equipment/EquipUsed/Blessing.prefab
+  - m_GUID: 9c0b8bdfede46aa8caf19899be22b797
+    m_Address: Assets/AddressableResource/Music/bgm-2 (mp3cut.net).mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f1a1a484be5b15646a8fa8822634f9ac
-    m_Address: Assets/AddressableResource/Equipment/EquipUsed/Jumping.prefab
+  - m_GUID: cf9eda27e303c47e5a1ebffbf9c1d21a
+    m_Address: "Assets/AddressableResource/Music/\u4E3B\u754C\u9762bgm-1 (mp3cut.net)
+      (1).mp3"
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
