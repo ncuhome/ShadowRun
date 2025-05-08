@@ -47,7 +47,7 @@ Material:
     - _Blend: 1
     - _CastShadows: 1
     - _Cull: 2
-    - _DarkIntense: 0.34484833
+    - _DarkIntense: 0.6185916
     - _DstBlend: 10
     - _QueueControl: 0
     - _QueueOffset: 0
