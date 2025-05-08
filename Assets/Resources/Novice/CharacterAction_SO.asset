@@ -16,4 +16,4 @@ MonoBehaviour:
   moveBackSpeed: 3
   fixSpeed: 2
   jumpMaxTime: 0.6
-  jumpHeight: 6
+  jumpHeight: 20

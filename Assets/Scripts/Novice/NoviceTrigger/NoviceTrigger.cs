@@ -21,7 +21,7 @@ public class NoviceTrigger : MonoBehaviour
     {
         if(collision.CompareTag("Player") && !isTriggered)
         {
-            Debug.Log("触发了新手引导");
+            //Debug.Log("触发了新手引导");
             Time.timeScale = 0;
             isTriggered = true;
             StartCoroutine(ShowTips());          

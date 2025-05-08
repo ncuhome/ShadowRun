@@ -16,6 +16,7 @@ public class EquipTabInputController : MonoBehaviour
     }
     private void OnClick()
     {
+        Debug.Log("tab click");
        EqiupmentController.instance.SetCurrentEquipNum(infoStruct.equipmentID);
     }
 }
