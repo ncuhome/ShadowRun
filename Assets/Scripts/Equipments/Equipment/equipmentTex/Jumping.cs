@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Jumping : MonoBehaviour,IEquipmentTex
 {
+    Transform localTransform;
+    public Transform equipTransform
+    {
+        get
+        {
+            if(localTransform==null) localTransform = transform;
+            return localTransform;
+        }
+    }
     EquipmentInfoStruct equipmentInfoStruct;
     public GameObject equipPreb;
     public EquipmentInfoStruct infoStruct

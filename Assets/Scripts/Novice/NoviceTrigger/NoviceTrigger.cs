@@ -45,7 +45,7 @@ public class NoviceTrigger : MonoBehaviour
             #else
                 if (Keyboard.current.anyKey.isPressed)
                 {
-                    tips.gameObject.SetActive(false);                                
+                    tip.gameObject.SetActive(false);                                
                     i++;
                 }
             #endif

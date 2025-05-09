@@ -7,6 +7,7 @@ using UnityEngine;
 public interface IEquipmentTex 
 {
     public EquipmentInfoStruct infoStruct { get;}
+    public Transform equipTransform{get;}
 
 }
 

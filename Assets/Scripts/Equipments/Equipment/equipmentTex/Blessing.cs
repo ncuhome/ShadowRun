@@ -5,6 +5,15 @@ using UnityEngine;
 public class Blessing : MonoBehaviour,IEquipmentTex
 {
     EquipmentInfoStruct equipmentInfoStruct;
+    Transform localTransform;
+    public Transform equipTransform
+    {
+        get
+        {
+            if(localTransform==null) localTransform = transform;
+            return localTransform;
+        }
+    }
     public GameObject equipPreb;
     public EquipmentInfoStruct infoStruct {
         get
